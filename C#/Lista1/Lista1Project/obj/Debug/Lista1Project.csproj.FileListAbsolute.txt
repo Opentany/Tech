@@ -1,0 +1,7 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Lista1Project.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Lista1Project.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Lista1.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Lista1.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\obj\Debug\Lista1Project.csprojResolveAssemblyReference.cache
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\obj\Debug\Lista1Project.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\obj\Debug\Lista1Project.pdb
