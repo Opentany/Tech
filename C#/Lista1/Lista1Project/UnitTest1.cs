@@ -29,7 +29,7 @@ namespace Lista1Project
             Assert.AreNotEqual(notexpected,actual);
         }
 
-        [TestMethod]
+        [Ignore]
         public void ToBase_ToBase19_ExceptionPlusFail()
         {
             try
@@ -46,15 +46,16 @@ namespace Lista1Project
         [TestMethod]
         public void SomethingMustBeFalse_IsFalse_ReallyIs()
         {
+            
             //arrange
             var condition = _num.SomethingMustBeFalse();
             //assert
             Assert.IsFalse(condition);
         }
-
         [TestMethod]
         public void _num_IsTypeOfNumber_ItIsNot()
         {
+            //assert
             Assert.IsNotInstanceOfType(_num.ToBase(2), typeof (Number));
         }
         
