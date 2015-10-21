@@ -2,7 +2,7 @@
 using Lista1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Lista1Project
+namespace UnitTesty
 {
     [TestClass]
     public class NumberTests

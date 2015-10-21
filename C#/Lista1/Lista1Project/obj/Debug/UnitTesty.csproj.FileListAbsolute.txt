@@ -1,0 +1,9 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\UnitTesty.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\UnitTesty.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Lista1.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Lista2.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Lista1.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Lista2.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\obj\Debug\UnitTesty.csprojResolveAssemblyReference.cache
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\obj\Debug\UnitTesty.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\obj\Debug\UnitTesty.pdb
