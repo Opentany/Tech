@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Lista2
 {
@@ -7,6 +8,7 @@ namespace Lista2
         private readonly int _numberofplayers;
         public PlayerMaker(int players)
         {
+            if (players < 2 || players > 52) throw new Exception("Wrong number of players");
             _numberofplayers = players;
         }
 

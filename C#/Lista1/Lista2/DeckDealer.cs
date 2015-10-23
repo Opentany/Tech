@@ -9,17 +9,19 @@ namespace Lista2
         private readonly List<string>[] _tabLists;
 
 
-        public DeckDealer(List<string>[] players, List<string> deck, int handOut)
+        public DeckDealer(List<string>[] players, IList<string> deck, int handOut)
         {
-            foreach (var VARIABLE in players)
+            if (players == null || deck == null) throw new Exception("One of arguments is null");
+            if (handOut<1 || handOut> deck.Count/ players.GetLength(0)) throw new Exception("Wrong number of cards to handout");
+            foreach (var variable in players)
             {
-                for (int i = 0; i < handOut; i++)
+                for (var i = 0; i < handOut; i++)
                 {
                     var tmpCard = deck.ElementAt(0);
-                    Console.WriteLine("Karta zabrana z talii "+tmpCard);
+                    Console.WriteLine("Card taken form deck "+tmpCard);
                     deck.RemoveAt(0);
-                    Console.WriteLine("kolejna karta powinna byc "+deck.ElementAt(0));
-                    VARIABLE.Add(tmpCard);
+                    Console.WriteLine("Next card should be "+deck.ElementAt(0));
+                    variable.Add(tmpCard);
                 }
                 
             }
