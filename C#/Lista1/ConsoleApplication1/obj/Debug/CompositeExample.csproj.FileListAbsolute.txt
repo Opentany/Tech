@@ -1,0 +1,5 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+E:\Projekty\repozytorium\Tech\C#\Lista1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+E:\Projekty\repozytorium\Tech\C#\Lista1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+E:\Projekty\repozytorium\Tech\C#\Lista1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

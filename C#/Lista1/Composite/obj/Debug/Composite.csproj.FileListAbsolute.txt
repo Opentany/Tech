@@ -1,0 +1,5 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\Composite\bin\Debug\Composite.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Composite\bin\Debug\Composite.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Composite\obj\Debug\Composite.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Composite\obj\Debug\Composite.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Composite\obj\Debug\Composite.csprojResolveAssemblyReference.cache

@@ -1,0 +1,1 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\Singleton\obj\Debug\Singleton.csprojResolveAssemblyReference.cache

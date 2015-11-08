@@ -1,0 +1,5 @@
+skrypt
+for f in `find -maxdepth 1 -type f`; do
+    name2=`echo $f | tr [:upper:] [:lower:]`;
+  mv "$f" "$name2";
+done

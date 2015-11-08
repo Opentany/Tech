@@ -1,0 +1,5 @@
+E:\Projekty\repozytorium\Tech\C#\CompositeExample\CompositeExample\bin\Debug\CompositeExample.exe.config
+E:\Projekty\repozytorium\Tech\C#\CompositeExample\CompositeExample\bin\Debug\CompositeExample.exe
+E:\Projekty\repozytorium\Tech\C#\CompositeExample\CompositeExample\bin\Debug\CompositeExample.pdb
+E:\Projekty\repozytorium\Tech\C#\CompositeExample\CompositeExample\obj\Debug\CompositeExample.exe
+E:\Projekty\repozytorium\Tech\C#\CompositeExample\CompositeExample\obj\Debug\CompositeExample.pdb
