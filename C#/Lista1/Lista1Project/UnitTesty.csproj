@@ -58,22 +58,51 @@
     <Compile Include="AdapterTests\thirdparty\ThirdPartyAdapterTest.cs" />
     <Compile Include="AdapterTests\thirdparty\ThirdPartyDoorObjectAdapterTest.cs" />
     <Compile Include="AdapterTests\thirdparty\ThirdPartyDoorTest.cs" />
+    <Compile Include="BuilderTest\VehicleBuildingTest.cs" />
+    <Compile Include="FacadeTest\facade\AbstractClientTest.cs" />
+    <Compile Include="FacadeTest\facade\BookStoreFacadeTest.cs" />
+    <Compile Include="FacadeTest\service\fake\FakeCustomerNotificationService.cs" />
+    <Compile Include="FacadeTest\service\TestCustomerDBService.cs" />
+    <Compile Include="FactoryMethodTest\AbstractReportingTest.cs" />
+    <Compile Include="FactoryMethodTest\ReportGeneratorTest.cs" />
+    <Compile Include="ReportTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTest2.cs" />
     <Compile Include="UnitTest3.cs" />
     <Compile Include="UnitTest4.cs" />
-    <Compile Include="UnitTest4.2.cs" />
+    <Compile Include="Singleton2Test.cs" />
     <Compile Include="AdapterTests\DoorTest.cs" />
+    <Compile Include="FacadeTesty.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AbstractFactory\AbstractFactory.csproj">
+      <Project>{07a2ec84-9021-4160-89c7-0aafd5e372db}</Project>
+      <Name>AbstractFactory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Adapter\Adapter.csproj">
       <Project>{798b8fa8-3189-4035-8838-95b964af05b3}</Project>
       <Name>Adapter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Builder\Builder.csproj">
+      <Project>{2473848d-31c9-4bbe-b0ad-6f57c6750001}</Project>
+      <Name>Builder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Composite\Composite.csproj">
       <Project>{bd2665d5-c410-44c9-8c25-676d905b1fcc}</Project>
       <Name>Composite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Facade2\Facade2.csproj">
+      <Project>{086f64a2-1264-4c94-9987-501b3d7b1bcf}</Project>
+      <Name>Facade2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Facade\Facade.csproj">
+      <Project>{ca4ddce6-3b84-4336-9faf-65f8e2959331}</Project>
+      <Name>Facade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FactoryMethod\FactoryMethod.csproj">
+      <Project>{c73d3100-9402-4003-adff-7176bf3c2005}</Project>
+      <Name>FactoryMethod</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lista1\Lista1.csproj">
       <Project>{43674089-f154-463c-b138-d8ce07772e27}</Project>
@@ -90,6 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FacadeTest\client\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

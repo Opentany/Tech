@@ -26,16 +26,11 @@ namespace UnitTesty.FacadeTest.service.fake
 	/* (non-Javadoc)
 	 * @see eu.jpereira.trainings.designpatterns.structural.facade.service.CustomerNotificationService#notifyClient(eu.jpereira.trainings.designpatterns.structural.facade.model.DispatchReceipt)
 	 */
-	public Expression<Action<CustomerNotificationService>> notifyClient(DispatchReceipt dispatchReceipt)
+	public void notifyClient(DispatchReceipt dispatchReceipt)
 	{
-	    return null;
+	    notifiedDispatchReceipts.Add(dispatchReceipt);
 
 	}
-
-        public Expression<Action<CustomerNotificationService>> notifyClient(Expression<Action<WharehouseService>> dummyDispatchReceipt)
-        {
-            throw new NotImplementedException();
-        }
 
         //Spy
 	public List<Order> getNotifiedOrders() {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Decorator.channel;
 
 namespace Decorator
 {
@@ -21,9 +22,11 @@ namespace Decorator
          */
         public void publish(String textMessage) {
 		//For each channels, deliver the message
-		for (SocialChannel channel : this.channels ) {
-			channel.deliverMessage(textMessage);
-		}
+            foreach (var channel in channels)
+            {
+                channel.deliverMessage(textMessage);
+            }
+		
 
 	}
 
@@ -32,7 +35,7 @@ namespace Decorator
          */
         public int getSocialChannelsCount()
         {
-            return this.channels.size();
+            return this.channels.Count;
         }
 
         /**
@@ -40,7 +43,7 @@ namespace Decorator
          */
         public void addSocialChannel(SocialChannel channel)
         {
-            this.channels.add(channel);
+            this.channels.Add(channel);
         }
 
         /**
@@ -51,19 +54,19 @@ namespace Decorator
         protected List<SocialChannel> createSocialChannelList()
         {
 
-            return new ArrayList<SocialChannel>();
+            return new List<SocialChannel>();
         }
 
         /**
          * @param channel
          * @return
          */
-        public boolean removeChannel(SocialChannel channel)
+        public bool removeChannel(SocialChannel channel)
         {
-            boolean removed = false;
-            if (this.channels.contains(channel))
+            bool removed = false;
+            if (this.channels.Contains(channel))
             {
-                this.channels.remove(channel);
+                this.channels.Remove(channel);
                 removed = true;
             }
             return removed;

@@ -2,4 +2,3 @@ E:\Projekty\repozytorium\Tech\C#\Lista1\Adapter\bin\Debug\Adapter.dll
 E:\Projekty\repozytorium\Tech\C#\Lista1\Adapter\bin\Debug\Adapter.pdb
 E:\Projekty\repozytorium\Tech\C#\Lista1\Adapter\obj\Debug\Adapter.dll
 E:\Projekty\repozytorium\Tech\C#\Lista1\Adapter\obj\Debug\Adapter.pdb
-E:\Projekty\repozytorium\Tech\C#\Lista1\Adapter\obj\Debug\Adapter.csprojResolveAssemblyReference.cache

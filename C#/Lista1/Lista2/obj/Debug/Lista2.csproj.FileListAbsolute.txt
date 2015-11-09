@@ -2,4 +2,3 @@ E:\Projekty\repozytorium\Tech\C#\Lista1\Lista2\bin\Debug\Lista2.dll
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista2\bin\Debug\Lista2.pdb
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista2\obj\Debug\Lista2.dll
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista2\obj\Debug\Lista2.pdb
-E:\Projekty\repozytorium\Tech\C#\Lista1\Lista2\obj\Debug\Lista2.csprojResolveAssemblyReference.cache

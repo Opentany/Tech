@@ -17,7 +17,7 @@ namespace Decorator.channel
 	
 	
 	public SocialChannelBuilder() {
-		this.pluggedChannels = createChannelsList();
+		this.pluggedChannels = createChannelsList<T>();
 		this.cachedChannels = createChachedChannedlList();
 		this.decorators = createDecoratorStack();
 		this.addDefaultChannels();
@@ -77,9 +77,9 @@ namespace Decorator.channel
 	 * @return
 	 */
 	private SocialChannel instantiateChannel(T claszz) {
-		SocialChannel instance = null;
+		T instance = default(T);
 		try {
-			T instance = (T)Activator.CreateInstance();
+			 instance = (T)Activator.CreateInstance();
 		} catch (InstantiationException e) {
 			// Just log it
 			e.printStackTrace();
@@ -87,7 +87,7 @@ namespace Decorator.channel
 			// just log it
 			e.printStackTrace();
 		}
-		return instance;
+		return (SocialChannel)instance;
 	}
 
 	/**

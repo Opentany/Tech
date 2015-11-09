@@ -8,11 +8,11 @@ namespace UnitTesty.FacadeTest.client
     public class AbstractClientTest
     {
         // Get the required services
-        protected CustomerDBService customerService;
-        protected BookDBService bookService;
-        protected OrderingService orderingService;
-        protected CustomerNotificationService customerNotificationService;
-        protected WharehouseService wharehouseService;
+        protected Mock<CustomerDBService> customerService;
+        protected Mock<BookDBService> bookService;
+        protected Mock<OrderingService> orderingService;
+        protected Mock<CustomerNotificationService> customerNotificationService;
+        protected Mock<WharehouseService> wharehouseService;
 
         [ClassInitialize]
         public void setupFakeServices()
@@ -32,10 +32,10 @@ namespace UnitTesty.FacadeTest.client
 	 * @return
 	 */
 
-        protected CustomerDBService getMockedCustomerDBService()
+        protected Mock<CustomerDBService> getMockedCustomerDBService()
         {
             Mock<CustomerDBService> mock = new Mock<CustomerDBService>();
-            return mock.Object;
+            return mock;
         }
 
         /**
@@ -44,10 +44,10 @@ namespace UnitTesty.FacadeTest.client
 	 * @return
 	 */
 
-        protected BookDBService getMockedBookDBService()
+        protected Mock<BookDBService> getMockedBookDBService()
         {
             Mock<BookDBService> mock = new Mock<BookDBService>();
-            return mock.Object;
+            return mock;
         }
 
         /**
@@ -56,10 +56,10 @@ namespace UnitTesty.FacadeTest.client
 	 * @return
 	 */
 
-        protected OrderingService getMockedOrderingService()
+        protected Mock<OrderingService> getMockedOrderingService()
         {
             Mock<OrderingService> mock = new Mock<OrderingService>();
-            return mock.Object;
+            return mock;
         }
 
         /**
@@ -68,10 +68,10 @@ namespace UnitTesty.FacadeTest.client
 	 * @return
 	 */
 
-        protected CustomerNotificationService getMockedCustomerNotificationService()
+        protected Mock<CustomerNotificationService> getMockedCustomerNotificationService()
         {
             Mock<CustomerNotificationService> mock = new Mock<CustomerNotificationService>();
-            return mock.Object;
+            return mock;
         }
 
         /**
@@ -80,10 +80,10 @@ namespace UnitTesty.FacadeTest.client
 	 * @return
 	 */
 
-        protected WharehouseService getMockedWhareHouseService()
+        protected Mock<WharehouseService> getMockedWhareHouseService()
         {
             Mock<WharehouseService> mock = new Mock<WharehouseService>();
-            return mock.Object;
+            return mock;
         }
     }
 }

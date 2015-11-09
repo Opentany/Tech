@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Numerics;
 using FactoryMethod;
 
 namespace UnitTesty.FactoryMethodTest

@@ -1,0 +1,4 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\Facade2\bin\Debug\Facade2.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Facade2\bin\Debug\Facade2.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Facade2\obj\Debug\Facade2.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Facade2\obj\Debug\Facade2.pdb

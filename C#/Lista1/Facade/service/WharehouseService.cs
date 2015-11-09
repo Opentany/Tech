@@ -11,7 +11,7 @@ namespace Facade.service
          * @param order
          * @return
          */
-        Expression<Action<WharehouseService>> dispatch(Order order);
+        DispatchReceipt dispatch(Order order);
 
     }
 }

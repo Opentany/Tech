@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using Facade.model;
 
@@ -15,8 +16,8 @@ namespace Facade.service
         /**
          * @param dispatchReceipt
          */
-        Expression<Action<CustomerNotificationService>> notifyClient(DispatchReceipt dispatchReceipt);
+        void notifyClient(DispatchReceipt dispatchReceipt);
 
-        Expression<Action<CustomerNotificationService>> notifyClient(Expression<Action<WharehouseService>> dummyDispatchReceipt);
+       
     }
 }

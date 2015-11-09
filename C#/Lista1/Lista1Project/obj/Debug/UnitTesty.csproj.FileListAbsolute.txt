@@ -15,3 +15,13 @@ E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Adapter.dll
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Moq.dll
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Adapter.pdb
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Moq.xml
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\AbstractFactory.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Builder.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Facade.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\FactoryMethod.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\AbstractFactory.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Builder.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Facade.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\FactoryMethod.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Facade2.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Facade2.pdb

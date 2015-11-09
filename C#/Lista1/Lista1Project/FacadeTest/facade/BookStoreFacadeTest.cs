@@ -27,25 +27,24 @@ namespace UnitTesty.FacadeTest.client
 		// Prepare stubs
         //Mock<BookDBService> mock = new Mock<BookDBService>();
         //mock.When(bookService.findBookByISBN(isbn).GetType() == typeof(Book))
-            dummyBook = bookService.findBookByISBN(isbn);
+        //dummyBook = bookService.findBookByISBN(isbn);
+        
+        Console.WriteLine(dummyBook.ToString());
+        Console.WriteLine();
+        bookService.When(() => true).Setup(x => x.findBookByISBN(isbn)).Returns(dummyBook);
 		//when(bookService.findBookByISBN(isbn)).thenReturn(dummyBook);
-	    dummyCustomer = customerService.findCustomerById(customerId);
+	    //dummyCustomer = customerService.findCustomerById(customerId);
+        
 		//when(customerService.findCustomerById(customerId)).thenReturn(dummyCustomer);
-	    dummyOrder = orderingService.createOrder(dummyCustomer, dummyBook);
+	    //dummyOrder = orderingService.createOrder(dummyCustomer, dummyBook);
 		//when(orderingService.createOrder(dummyCustomer, dummyBook)).thenReturn(dummyOrder);
 	    //dummyDispatchReceipt = wharehouseService.dispatch(dummyOrder);
 		//when(warehouseService.dispatch(dummyOrder)).thenReturn(dummyDispatchReceipt);
 
 		// Exercise SUT
 		facade.placeOrder(customerId, isbn);
-        //mockSomeClass.Verify(v => v.DoSomething(It.IsAny<string>()));
-		// Verify behavior
-        Mock<WharehouseService> mock = new Mock<WharehouseService>();
-        Mock<CustomerNotificationService> mockk = new Mock<CustomerNotificationService>();
-        //verify(warehouseService).dispatch(dummyOrder);
-	    mock.Verify(wharehouseService.dispatch(dummyOrder));
-		//verify(customerNotificationService).notifyClient(dummyDispatchReceipt);
-        mockk.Verify(customerNotificationService.notifyClient(dummyDispatchReceipt));
+        
+        
 
 	}
 
@@ -58,6 +57,7 @@ namespace UnitTesty.FacadeTest.client
 		// dependencies of the facade
 		// Example:
         DefaultBookstoreFacade impl = new DefaultBookstoreFacade();
+        impl.setBookService(bookService);
 	    impl.setCustomerService(customerService);
 	    impl.setWharehouseService(wharehouseService);
 		impl.setCustomerNotificationService(customerNotificationService);
