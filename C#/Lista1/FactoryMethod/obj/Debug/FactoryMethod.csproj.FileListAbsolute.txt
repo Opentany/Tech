@@ -1,0 +1,4 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\FactoryMethod\bin\Debug\FactoryMethod.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\FactoryMethod\bin\Debug\FactoryMethod.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\FactoryMethod\obj\Debug\FactoryMethod.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\FactoryMethod\obj\Debug\FactoryMethod.pdb

@@ -1,0 +1,4 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\Builder\bin\Debug\Builder.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Builder\bin\Debug\Builder.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Builder\obj\Debug\Builder.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Builder\obj\Debug\Builder.pdb

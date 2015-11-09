@@ -1,0 +1,4 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\AbstractFactory\bin\Debug\AbstractFactory.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\AbstractFactory\bin\Debug\AbstractFactory.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\AbstractFactory\obj\Debug\AbstractFactory.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\AbstractFactory\obj\Debug\AbstractFactory.pdb
