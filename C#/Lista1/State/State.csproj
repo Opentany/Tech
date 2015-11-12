@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1C7AB3A9-123D-4C97-94AC-70D68A0EEE49}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>State</RootNamespace>
+    <AssemblyName>State</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="appliance\AbstractAppliance.cs" />
+    <Compile Include="appliance\Appliance.cs" />
+    <Compile Include="appliance\ApplianceCommunicationExcetion.cs" />
+    <Compile Include="appliance\dao\ApplianceDAO.cs" />
+    <Compile Include="appliance\snapshot\Snapshot.cs" />
+    <Compile Include="appliance\snapshot\Snapshotable.cs" />
+    <Compile Include="appliance\state\ApplianceState.cs" />
+    <Compile Include="appliance\state\ApplianceStateBehavior.cs" />
+    <Compile Include="appliance\state\OffState.cs" />
+    <Compile Include="appliance\state\OnState.cs" />
+    <Compile Include="appliance\state\StartedState.cs" />
+    <Compile Include="appliance\state\StoppedState.cs" />
+    <Compile Include="appliance\state\UnknownState.cs" />
+    <Compile Include="appliance\Toaster.cs" />
+    <Compile Include="command\AbstractCommand.cs" />
+    <Compile Include="command\Command.cs" />
+    <Compile Include="command\CouldNotExecuteCommandException.cs" />
+    <Compile Include="command\CouldNotRollbackCommandException.cs" />
+    <Compile Include="command\director\CommandDirector.cs" />
+    <Compile Include="command\director\DefaulCommandDirector.cs" />
+    <Compile Include="command\director\ErrorDirectingCommandsException.cs" />
+    <Compile Include="command\director\FailStategy.cs" />
+    <Compile Include="command\Event.cs" />
+    <Compile Include="command\StartApplianceCommand.cs" />
+    <Compile Include="command\StopApplianceCommand.cs" />
+    <Compile Include="command\TurnOffAppliance.cs" />
+    <Compile Include="command\TurnOnApplianceCommand.cs" />
+    <Compile Include="command\UndoableCommand.cs" />
+    <Compile Include="event\Alarm.cs" />
+    <Compile Include="event\alarm\HumidityAlarm.cs" />
+    <Compile Include="event\alarm\LowBateryAlarm.cs" />
+    <Compile Include="event\alarm\TemperatureAlarm.cs" />
+    <Compile Include="event\statechange\StateChangeEvent.cs" />
+    <Compile Include="interpreter\EventDataInterpreter.cs" />
+    <Compile Include="interpreter\JSONEventDataInterpreter.cs" />
+    <Compile Include="event\ApplianceEvent.cs" />
+    <Compile Include="event\AttributeChangeEvent.cs" />
+    <Compile Include="event\EventData.cs" />
+    <Compile Include="mapper\ApplianceEventMapper.cs" />
+    <Compile Include="mapper\EventMapper.cs" />
+    <Compile Include="mapper\LinkedListQueue.cs" />
+    <Compile Include="mapper\MapperChain.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

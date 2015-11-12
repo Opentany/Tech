@@ -75,6 +75,13 @@
     <Compile Include="Flyweight\ServerIntegrationTest.cs" />
     <Compile Include="Flyweight\WeatherServiceTest.cs" />
     <Compile Include="ReportTest.cs" />
+    <Compile Include="StateTest\appliance\state\ApplianceStateBehavorTest.cs" />
+    <Compile Include="StateTest\command\director\CommandDirectorTest.cs" />
+    <Compile Include="StateTest\command\EventTest.cs" />
+    <Compile Include="StateTest\fakes\FakeAlarmMapper.cs" />
+    <Compile Include="StateTest\fakes\FakeApplianceDAO.cs" />
+    <Compile Include="StateTest\fakes\FakeStateChangeMapper.cs" />
+    <Compile Include="StateTest\mapper\UnitTest1.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTest2.cs" />
@@ -124,6 +131,10 @@
     <ProjectReference Include="..\Singleton2\Singleton2.csproj">
       <Project>{41d4e7e2-e15b-46c0-878c-e02c1dac2d4b}</Project>
       <Name>Singleton2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\State\State.csproj">
+      <Project>{1c7ab3a9-123d-4c97-94ac-70d68a0eee49}</Project>
+      <Name>State</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
