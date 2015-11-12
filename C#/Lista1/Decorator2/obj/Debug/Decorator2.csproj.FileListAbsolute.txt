@@ -1,0 +1,5 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\Decorator2\bin\Debug\Decorator2.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Decorator2\bin\Debug\Decorator2.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Decorator2\obj\Debug\Decorator2.csprojResolveAssemblyReference.cache
+E:\Projekty\repozytorium\Tech\C#\Lista1\Decorator2\obj\Debug\Decorator2.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Decorator2\obj\Debug\Decorator2.pdb

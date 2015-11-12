@@ -90,6 +90,7 @@
     <Compile Include="Singleton2Test.cs" />
     <Compile Include="AdapterTests\DoorTest.cs" />
     <Compile Include="FacadeTesty.cs" />
+    <Compile Include="Decorator2Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AbstractFactory\AbstractFactory.csproj">
@@ -107,6 +108,10 @@
     <ProjectReference Include="..\Composite\Composite.csproj">
       <Project>{bd2665d5-c410-44c9-8c25-676d905b1fcc}</Project>
       <Name>Composite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Decorator2\Decorator2.csproj">
+      <Project>{c048ff0c-118d-462c-bceb-6e3d99624282}</Project>
+      <Name>Decorator2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Facade2\Facade2.csproj">
       <Project>{086f64a2-1264-4c94-9987-501b3d7b1bcf}</Project>

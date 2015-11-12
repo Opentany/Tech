@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flyweight", "Flyweight\Flyw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "State", "State\State.csproj", "{1C7AB3A9-123D-4C97-94AC-70D68A0EEE49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decorator2", "Decorator2\Decorator2.csproj", "{C048FF0C-118D-462C-BCEB-6E3D99624282}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{1C7AB3A9-123D-4C97-94AC-70D68A0EEE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C7AB3A9-123D-4C97-94AC-70D68A0EEE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C7AB3A9-123D-4C97-94AC-70D68A0EEE49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C048FF0C-118D-462C-BCEB-6E3D99624282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C048FF0C-118D-462C-BCEB-6E3D99624282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C048FF0C-118D-462C-BCEB-6E3D99624282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C048FF0C-118D-462C-BCEB-6E3D99624282}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
