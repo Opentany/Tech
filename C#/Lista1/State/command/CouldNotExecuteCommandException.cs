@@ -1,18 +1,20 @@
-﻿namespace State.command
+﻿using System;
+
+namespace State.command
 {
-    public class CouldNotExecuteCommandException extends Exception {
+    public class CouldNotExecuteCommandException : Exception {
 
 	/**
 	 * @param fillInStackTrace
 	 */
-	public CouldNotExecuteCommandException(Throwable throwable) {
-		super(throwable);
+	public CouldNotExecuteCommandException(Exception throwable) {
+		//super(throwable);
 	}
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7531282976902475900L;
+	private static readonly long serialVersionUID = -7531282976902475900L;
 
 }
 }

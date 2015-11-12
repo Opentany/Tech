@@ -1,6 +1,8 @@
-﻿namespace State.mapper
+﻿using System.Collections.Generic;
+
+namespace State.mapper
 {
-    public class LinkedListQueue<T> extends AbstractQueue<T> {
+    public class LinkedListQueue<T> : Queue<T> {
 	
 	private LinkedList<T> backingList;
 
@@ -13,9 +15,9 @@
 	 * 
 	 * @see java.util.Queue#offer(java.lang.Object)
 	 */
-	@Override
-	public boolean offer(T e) {
-		return this.backingList.add(e);
+	public bool offer(T e)
+	{
+	    return this.backingList.Contains(e);
 	}
 
 	/*
@@ -23,13 +25,13 @@
 	 * 
 	 * @see java.util.Queue#peek()
 	 */
-	@Override
 	public T peek() {
 
-		if (!this.backingList.isEmpty()) {
-			return this.backingList.getFirst();
+		if (backingList.Count!=0)
+		{
+		    return this.backingList.First.Value;
 		}
-		return null;
+		return default(T);
 
 	}
 
@@ -38,10 +40,10 @@
 	 * 
 	 * @see java.util.Queue#poll()
 	 */
-	@Override
+
 	public T poll() {
-		T el = this.backingList.getFirst();
-		this.backingList.removeFirst();
+		T el = this.backingList.First.Value;
+	    this.backingList.Remove(el);
 		return el;
 	}
 
@@ -50,9 +52,10 @@
 	 * 
 	 * @see java.util.AbstractCollection#iterator()
 	 */
-	@Override
-	public Iterator<T> iterator() {
-		return this.backingList.iterator();
+
+	public IEnumerator<T> iterator()
+	{
+	    return this.backingList.GetEnumerator();
 	}
 
 	/*
@@ -60,10 +63,10 @@
 	 * 
 	 * @see java.util.AbstractCollection#size()
 	 */
-	@Override
+
 	public int size() {
 
-		return this.backingList.size();
+		return this.backingList.Count;
 	}
 }
 }

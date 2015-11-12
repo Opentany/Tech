@@ -3,15 +3,15 @@ using State.appliance;
 
 namespace State.@event
 {
-    public abstract class Alarm extends ApplianceEvent {
+    public abstract class Alarm : ApplianceEvent {
 
 	private String additionalInfo;
 
 	/**
 	 * @param sourceAppliance
 	 */
-	public Alarm(Appliance sourceAppliance) {
-		super(sourceAppliance);
+	public Alarm(Appliance sourceAppliance):base(sourceAppliance) {
+		//super(sourceAppliance);
 	}
 
 	/**

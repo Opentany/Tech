@@ -1,6 +1,10 @@
-﻿namespace State.command
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace State.command
 {
-    public class Event implements UndoableCommand, Iterable<Command> {
+    public class Event : UndoableCommand, IEnumerable<Command>
+    {
 
 	// Back list
 	private List<Command> commands;
@@ -18,11 +22,11 @@
 	 * @param command
 	 */
 	public void addCommand(Command command) {
-		this.commands.add(command);
+		this.commands.Add(command);
 	}
 
 	public void removeCommand(Command command) {
-		this.commands.remove(command);
+		this.commands.Remove(command);
 	}
 
 	/*
@@ -32,14 +36,14 @@
 	 * eu.jpereira.trainings.designpatterns.behavioral.mediator.command.Command
 	 * #execute()
 	 */
-	@Override
-	public void execute() throws CouldNotExecuteCommandException {
-		for (Command command : commands) {
-			this.executedCommands.push(command);
-			command.execute();
+
+	public void execute() {//throws CouldNotExecuteCommandException {
+        //for (Command command : commands) {
+        //    this.executedCommands.push(command);
+        //    command.execute();
 			
 
-		}
+        //}
 	}
 
 	/*
@@ -47,10 +51,11 @@
 	 * 
 	 * @see java.lang.Iterable#iterator()
 	 */
-	@Override
-	public Iterator<Command> iterator() {
-		return this.commands.iterator();
-	};
+
+	public List<Command>.Enumerator enumerator()
+	{
+	    return this.commands.GetEnumerator();
+	}
 
 	/**
 	 * Create the list of commands
@@ -58,7 +63,7 @@
 	 * @return
 	 */
 	protected List<Command> createCommandList() {
-		return new ArrayList<Command>();
+		return new List<Command>();
 	}
 
 	/**
@@ -76,9 +81,9 @@
 	 *            an array of commands
 	 * @return
 	 */
-	public Event with(Command... command) {
+	public Event with(params Command[] command) {
 
-		this.commands.addAll(Arrays.asList(command));
+		this.commands.AddRange(command);
 		return this;
 	}
 
@@ -88,16 +93,25 @@
 	 * @see eu.jpereira.trainings.designpatterns.behavioral.mediator.command.
 	 * UndoableCommand#rollback()
 	 */
-	@Override
-	public void rollback() throws CouldNotRollbackCommandException {
-		while ( !executedCommands.isEmpty()) {
-			Command command = executedCommands.pop();
-			if (command instanceof UndoableCommand) {
+
+	public void rollback(){// throws CouldNotRollbackCommandException {
+		while ( executedCommands.Count!=0) {
+			Command command = executedCommands.Pop();
+			if (command.GetType().IsAssignableFrom(typeof(UndoableCommand))) {
 				((UndoableCommand)(command)).rollback();
 			}
 		}
 
 	}
 
-}
+        public IEnumerator<Command> GetEnumerator()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
 }

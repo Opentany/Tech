@@ -4,7 +4,7 @@ using State.@event;
 
 namespace State.mapper
 {
-    public class ApplianceEventMapper implements EventMapper {
+    public class ApplianceEventMapper : EventMapper {
 
 	private ApplianceDAO applianceDao = null;
 
@@ -27,7 +27,7 @@ namespace State.mapper
 	 * eu.jpereira.trainings.designpatterns.behavioral.observer.mapper
 	 * .MapperChain)
 	 */
-	@Override
+
 	public void doMap(EventData data, MapperChain chain) {
 		
 		

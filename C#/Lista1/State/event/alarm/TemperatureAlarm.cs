@@ -2,13 +2,13 @@
 
 namespace State.@event.alarm
 {
-    public class TemperatureAlarm extends Alarm {
+    public class TemperatureAlarm : Alarm {
 
 	/**
 	 * @param sourceAppliance
 	 */
-	public TemperatureAlarm(Appliance sourceAppliance) {
-		super(sourceAppliance);
+	public TemperatureAlarm(Appliance sourceAppliance):base(sourceAppliance) {
+		//super(sourceAppliance);
 	}
 
 }

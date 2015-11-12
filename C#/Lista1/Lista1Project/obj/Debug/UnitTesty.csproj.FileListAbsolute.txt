@@ -25,3 +25,5 @@ E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Facade.pdb
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\FactoryMethod.pdb
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Facade2.dll
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Facade2.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\State.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\State.pdb

@@ -2,13 +2,13 @@
 
 namespace State.@event.alarm
 {
-    public class HumidityAlarm extends Alarm {
+    public class HumidityAlarm : Alarm {
 
 	/**
 	 * @param sourceAppliance
 	 */
-	public HumidityAlarm(Appliance sourceAppliance) {
-		super(sourceAppliance);
+	public HumidityAlarm(Appliance sourceAppliance):base(sourceAppliance) {
+		//super(sourceAppliance);
 
 	}
 

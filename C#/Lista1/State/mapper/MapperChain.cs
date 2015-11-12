@@ -6,7 +6,7 @@ namespace State.mapper
     public class MapperChain
     {
 
-        private Queue<EventMapper> mappers;
+        private LinkedListQueue<EventMapper> mappers;
 
         public MapperChain()
         {
@@ -19,7 +19,7 @@ namespace State.mapper
          */
         public void doMap(EventData data)
         {
-            if (this.mappers.peek() != null)
+            if (this.mappers.Peek() != null)
             {
                 EventMapper mapper = this.mappers.poll();
                 mapper.doMap(data, this);

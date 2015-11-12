@@ -2,13 +2,13 @@
 
 namespace State.@event.alarm
 {
-    public class LowBateryAlarm extends Alarm {
+    public class LowBateryAlarm : Alarm {
 
 	/**
 	 * @param sourceAppliance
 	 */
-	public LowBateryAlarm(Appliance sourceAppliance) {
-		super(sourceAppliance);
+	public LowBateryAlarm(Appliance sourceAppliance):base(sourceAppliance) {
+		//super(sourceAppliance);
 
 	}
 

@@ -1,14 +1,15 @@
-﻿using State.appliance;
+﻿using System.Collections.Generic;
+using State.appliance;
 using State.appliance.snapshot;
 
 namespace State.command
 {
-    public abstract class AbstractCommand implements UndoableCommand {
+    public abstract class AbstractCommand : UndoableCommand {
 
 	protected Appliance receiverAppliance = null;
 	
-	protected Map<Command, Snapshot> snapshots;
-
+	protected Dictionary<Command, Snapshot> snapshots;
+    protected AbstractCommand() { }
 	protected AbstractCommand(Appliance appliance) {
 		this.receiverAppliance = appliance;
 		this.snapshots = createSnapshots();
@@ -18,8 +19,18 @@ namespace State.command
 	 * factory method
 	 * @return
 	 */
-	protected  Map<Command, Snapshot> createSnapshots() {
-		return new HashMap<Command, Snapshot>();
+	protected  Dictionary<Command, Snapshot> createSnapshots() {
+		return new Dictionary<Command, Snapshot>();
 	}
-}
+
+        public virtual void execute()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual void rollback()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 }

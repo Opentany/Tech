@@ -1,12 +1,15 @@
-﻿namespace State.command
+﻿using System;
+using State.appliance;
+
+namespace State.command
 {
-    public class StopApplianceCommand extends AbstractCommand {
+    public class StopApplianceCommand : AbstractCommand {
 
 	/**
 	 * @param appliance
 	 */
-	public StopApplianceCommand(Appliance appliance) {
-		super(appliance);
+	public StopApplianceCommand(Appliance appliance):base(appliance) {
+		//super(appliance);
 
 	}
 
@@ -17,15 +20,15 @@
 	 * eu.jpereira.trainings.designpatterns.behavioral.mediator.command.Command
 	 * #execute()
 	 */
-	@Override
-	public void execute() throws CouldNotExecuteCommandException {
+	
+	public override void execute(){// throws CouldNotExecuteCommandException {
 		try {
 			this.receiverAppliance.stop();
 		} catch (ApplianceCommunicationException e) {
 			// log it
-			e.printStackTrace();
+			Console.WriteLine(e.ToString());//e.printStackTrace();
 			// Encapsulate
-			throw new CouldNotExecuteCommandException(e.fillInStackTrace());
+			throw new CouldNotExecuteCommandException(e/*.fillInStackTrace()*/);
 		}
 
 	}
@@ -33,14 +36,14 @@
 	/* (non-Javadoc)
 	 * @see eu.jpereira.trainings.designpatterns.behavioral.mediator.command.UndoableCommand#rollback()
 	 */
-	@Override
-	public void rollback() throws CouldNotRollbackCommandException {
+
+	public override void rollback(){//}throws CouldNotRollbackCommandException {
 		
 		try {
 			this.receiverAppliance.start();
 		} catch (ApplianceCommunicationException e) {
 			// log it
-			e.printStackTrace();
+			Console.WriteLine(e.ToString());//e.printStackTrace();
 			//Encapsulate
 			throw new CouldNotRollbackCommandException(e);
 		}

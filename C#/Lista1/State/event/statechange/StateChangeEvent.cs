@@ -2,13 +2,15 @@
 
 namespace State.@event.statechange
 {
-    public class StateChangeEvent extends ApplianceEvent {
+    public class StateChangeEvent : ApplianceEvent {
 
 	/**
 	 * @param sourceAppliance
 	 */
-	public StateChangeEvent(Appliance sourceAppliance) {
-		super(sourceAppliance);
+        public StateChangeEvent(Appliance sourceAppliance)
+            : base(sourceAppliance)
+        {
+            //super(sourceAppliance);
 
 	}
 

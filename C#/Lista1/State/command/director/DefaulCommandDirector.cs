@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace State.command.director
 {
@@ -35,7 +36,7 @@ namespace State.command.director
 	 * behavioral.mediator.appliance.director.FailStategy)
 	 */
 
-	@Override
+
 	public void setFailStrategy(FailStategy strategy) {
 		this.failStrategy = strategy;
 
@@ -49,7 +50,7 @@ namespace State.command.director
 	 * .CommandDirector#run()
 	 */
 
-	@Override
+	
 	public void run() {// ErrorDirectingCommandsException {
         //for (Command command : this.commands) {
 
@@ -67,6 +68,25 @@ namespace State.command.director
 
         //    }
         //}
+	    foreach (var command in this.commands)
+	    {
+            try
+            { // Push the command to the stack of executed commands
+                executedCommands.Push(command);
+                command.execute();
+
+            }
+            catch (CouldNotExecuteCommandException e)
+            { // Default strategy is
+                // to
+                rollback();
+                // Log
+                Console.WriteLine(e.ToString());//e.printStackTrace();
+                // abstract
+                throw new ErrorDirectingCommandsException(e);
+
+            }
+	    }
 
 	}
 
@@ -83,13 +103,14 @@ namespace State.command.director
 	 * .mediator.command.Command[])
 	 */
 
-	@Override
+	
 	public void addCommand(Command command,params Command[] commands) {
-		this.commands.add(command); // Add the Commands in the Arrsy of argument
+		this.commands.Add(command); // Add the Commands in the Arrsy of argument
 									// commands to the list of commands to
 									// execute
-		if (commands != null && commands.length > 0) {
-			this.commands.addAll(Arrays.asList(commands));
+		if (commands != null && commands.Length > 0) {
+			//this.commands.addAll(Arrays.asList(commands));
+            this.commands.AddRange(commands);
 		}
 	}
 
@@ -97,16 +118,17 @@ namespace State.command.director
 	 * Rollback the command execution
 	 */
 	private void rollback() {
-		while (!executedCommands.isEmpty()) {
+		while (executedCommands.Count != 0) {
 			// Pop the last executed command....
-			Command rollBackcommand = executedCommands.pop();
-			if (rollBackcommand instanceof UndoableCommand) {
+			Command rollBackcommand = executedCommands.Pop();
+            if (rollBackcommand.GetType().IsAssignableFrom(typeof(UndoableCommand)))
+            {
 				try {
 					// Rollback it
 					((UndoableCommand) rollBackcommand).rollback();
 				} catch (CouldNotRollbackCommandException e) {
 					// Ignore
-					e.printStackTrace();
+					Console.WriteLine(e.ToString());//e.printStackTrace();
 				}
 
 			}
