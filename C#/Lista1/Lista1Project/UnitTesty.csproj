@@ -65,6 +65,15 @@
     <Compile Include="FacadeTest\service\TestCustomerDBService.cs" />
     <Compile Include="FactoryMethodTest\AbstractReportingTest.cs" />
     <Compile Include="FactoryMethodTest\ReportGeneratorTest.cs" />
+    <Compile Include="Flyweight\dao\FakeCityDaoTest.cs" />
+    <Compile Include="Flyweight\fakes\FakeCityDao.cs" />
+    <Compile Include="Flyweight\fakes\FakeHTTPHandler.cs" />
+    <Compile Include="Flyweight\fakes\FakeHTTPServer.cs" />
+    <Compile Include="Flyweight\fakes\FakeWeatherService.cs" />
+    <Compile Include="Flyweight\fakes\FakeWeatherStationController.cs" />
+    <Compile Include="Flyweight\fakes\FakeWeatherStationControllerFactory.cs" />
+    <Compile Include="Flyweight\ServerIntegrationTest.cs" />
+    <Compile Include="Flyweight\WeatherServiceTest.cs" />
     <Compile Include="ReportTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

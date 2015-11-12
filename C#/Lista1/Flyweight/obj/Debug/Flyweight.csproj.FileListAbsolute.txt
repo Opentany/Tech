@@ -1,0 +1,4 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\Flyweight\bin\Debug\Flyweight.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Flyweight\bin\Debug\Flyweight.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Flyweight\obj\Debug\Flyweight.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Flyweight\obj\Debug\Flyweight.pdb

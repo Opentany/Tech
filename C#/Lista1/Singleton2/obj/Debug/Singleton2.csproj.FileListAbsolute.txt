@@ -2,3 +2,4 @@ E:\Projekty\repozytorium\Tech\C#\Lista1\Singleton2\bin\Debug\Singleton2.dll
 E:\Projekty\repozytorium\Tech\C#\Lista1\Singleton2\bin\Debug\Singleton2.pdb
 E:\Projekty\repozytorium\Tech\C#\Lista1\Singleton2\obj\Debug\Singleton2.dll
 E:\Projekty\repozytorium\Tech\C#\Lista1\Singleton2\obj\Debug\Singleton2.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Singleton2\obj\Debug\Singleton2.csprojResolveAssemblyReference.cache
