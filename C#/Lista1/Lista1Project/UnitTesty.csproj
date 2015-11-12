@@ -92,6 +92,7 @@
     <Compile Include="FacadeTesty.cs" />
     <Compile Include="Decorator2Test.cs" />
     <Compile Include="State2Test.cs" />
+    <Compile Include="Flyweight2Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AbstractFactory\AbstractFactory.csproj">
@@ -125,6 +126,10 @@
     <ProjectReference Include="..\FactoryMethod\FactoryMethod.csproj">
       <Project>{c73d3100-9402-4003-adff-7176bf3c2005}</Project>
       <Name>FactoryMethod</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Flyweight2\Flyweight2.csproj">
+      <Project>{52848d71-dba2-4964-b7f9-9c75a227c219}</Project>
+      <Name>Flyweight2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lista1\Lista1.csproj">
       <Project>{43674089-f154-463c-b138-d8ce07772e27}</Project>

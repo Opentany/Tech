@@ -1,0 +1,5 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\Flyweight2\bin\Debug\Flyweight2.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Flyweight2\bin\Debug\Flyweight2.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Flyweight2\obj\Debug\Flyweight2.csprojResolveAssemblyReference.cache
+E:\Projekty\repozytorium\Tech\C#\Lista1\Flyweight2\obj\Debug\Flyweight2.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Flyweight2\obj\Debug\Flyweight2.pdb

@@ -31,3 +31,5 @@ E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Decorator2.dll
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Decorator2.pdb
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\State2.dll
 E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\State2.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Flyweight2.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\Lista1Project\bin\Debug\Flyweight2.pdb
