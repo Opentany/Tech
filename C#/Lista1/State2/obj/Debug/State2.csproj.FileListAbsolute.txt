@@ -1,0 +1,5 @@
+E:\Projekty\repozytorium\Tech\C#\Lista1\State2\bin\Debug\State2.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\State2\bin\Debug\State2.pdb
+E:\Projekty\repozytorium\Tech\C#\Lista1\State2\obj\Debug\State2.csprojResolveAssemblyReference.cache
+E:\Projekty\repozytorium\Tech\C#\Lista1\State2\obj\Debug\State2.dll
+E:\Projekty\repozytorium\Tech\C#\Lista1\State2\obj\Debug\State2.pdb
