@@ -25,7 +25,7 @@ namespace Singleton2
         {
             if (_instance == null)
             {
-                lock (SyncLock)
+                lock (typeof (LoadBalancer))
                 {
                     if (_instance == null)
                     {

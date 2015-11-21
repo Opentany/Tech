@@ -1,0 +1,26 @@
+
+args=("$@")
+sort ${args[1]}
+echo...........
+sort ${args[2]}
+echo...........
+if [ ${args[0]} = "-d" ]; then
+	com -23 ${args[1]} ${args[2]} | cat > tekst3.txt
+	sort tekst3.txt
+	echo.............
+elif [ ${args[0]} = "-s" ]; then
+	com -12 ${args[1]} ${args[2]} | cat > tekst3.txt
+	sort tekst3.txt
+	echo.............
+	com -13 ${args[1]} ${args[2]} | cat > tekst4.txt
+	sort tekst4.txt
+	echo.............
+	com -23 ${args[1]} ${args[2]} | cat > tekst2.txt
+	sort tekst2.txt
+	echo.............
+	cat tekst4.txt tekst3.txt tekst2.txt> wynik.txt
+	sort wynik.txt
+	echo .............
+else
+	echo wrong first argument -s for sum -d for diff
+fi
