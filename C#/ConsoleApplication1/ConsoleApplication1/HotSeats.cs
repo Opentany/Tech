@@ -6,7 +6,7 @@ using Poker.Players;
 
 namespace ConsoleApplication1
 {
-    class Game
+    class HotSeats
     {
         static List<BasicPlayer> KolejnosPlayers(List<BasicPlayer> listagraczy, int ktodealer)
         {
