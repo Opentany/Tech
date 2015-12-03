@@ -13,6 +13,9 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
+            Random random = new Random();
+            int smallBlind;
+            int bigBlind;
             Console.WriteLine("Podaj ilość graczy :");
             int playersCount = int.Parse(Console.ReadLine());
             Console.WriteLine(playersCount);
@@ -23,6 +26,10 @@ namespace ConsoleApplication1
                 Console.ReadKey();
                 return;
             }
+            Console.WriteLine("Podaj małą ciemną");
+            smallBlind = int.Parse(Console.ReadLine());
+            Console.WriteLine("Podaj dużą ciemną");
+            bigBlind = int.Parse(Console.ReadLine());
             List<BasicPlayer> graczeList = new List<BasicPlayer>(playersCount);
             for (int i = 0; i < playersCount; i++)
 
@@ -48,6 +55,11 @@ namespace ConsoleApplication1
             }
             Console.ReadKey();
             Console.Clear();
+            foreach (var gracz in graczeList)
+            {
+                gracz.Tokens = 500;
+            }
+            int dealerButton = random.Next(graczeList.Count);
             Console.WriteLine("Rozdanie wstępne");
             foreach (var gracz in graczeList)
             {
@@ -64,7 +76,7 @@ namespace ConsoleApplication1
                 }
             }
             Console.ReadKey();
-
+            Console.WriteLine("1 tura licytacji");
             Console.WriteLine("Koniec");
             Console.ReadKey();
         }
