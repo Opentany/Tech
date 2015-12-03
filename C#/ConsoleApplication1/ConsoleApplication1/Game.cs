@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Poker.Cards;
@@ -11,6 +12,39 @@ namespace ConsoleApplication1
 {
     class Game
     {
+        static List<BasicPlayer> kolejnosPlayers(List<BasicPlayer> Listagraczy, int ktodealer)
+        {
+            int j;
+            List<BasicPlayer> tmp = new List<BasicPlayer>();
+            for (int i = 0; i < Listagraczy.Count; i++)
+            {
+                j = MaMalaCiemna(ktodealer + i, Listagraczy.Count);
+                tmp.Add(Listagraczy[j]);
+            }
+            return tmp;
+        }
+        static int MaMalaCiemna(int ktodealer, int liczbagraczy)//aka nastepny gracz
+        {
+            if (ktodealer + 1 > liczbagraczy - 1)
+            {
+                return ktodealer + 1 - liczbagraczy;
+            }
+            else
+            {
+                return ktodealer + 1;
+            }
+        }
+        static int MaDuzaCiemna(int ktodealer, int liczbagraczy)
+        {
+            if (ktodealer + 2 > liczbagraczy - 1)
+            {
+                return ktodealer + 2 - liczbagraczy;
+            }
+            else
+            {
+                return ktodealer + 2;
+            }
+        }
         static void Main(string[] args)
         {
             Random random = new Random();
@@ -57,26 +91,39 @@ namespace ConsoleApplication1
             Console.Clear();
             foreach (var gracz in graczeList)
             {
-                gracz.Tokens = 500;
+                gracz.Tokens = 100;
             }
             int dealerButton = random.Next(graczeList.Count);
+            int mamalaciemna = MaMalaCiemna(dealerButton, playersCount);
+            int maduzaciemna = MaDuzaCiemna(dealerButton, playersCount);
+            Console.WriteLine(graczeList[dealerButton].Name+" Ma dealer button");
+            Console.WriteLine(graczeList[mamalaciemna].Name + " Ma mala ciemna");
+            Console.WriteLine(graczeList[maduzaciemna].Name + " Ma duza ciemna");
             Console.WriteLine("Rozdanie wstępne");
             foreach (var gracz in graczeList)
             {
-                Console.WriteLine(gracz.Name);
+               // Console.WriteLine(gracz.Name);
                 gracz.Hand.Add(talia.GetTopCard());
                 gracz.Hand.Add(talia.GetTopCard());
             }
-            foreach (var gracz in graczeList)
-            {
-                Console.WriteLine(gracz.Name);
-                foreach (var karty in gracz.Hand)
-                {
-                    Console.WriteLine(karty.ToString());
-                }
-            }
+            //foreach (var gracz in graczeList)
+            //{
+            //    Console.WriteLine(gracz.Name);
+            //    foreach (var karty in gracz.Hand)
+            //    {
+            //        Console.WriteLine(karty.ToString());
+            //    }
+            //}
             Console.ReadKey();
             Console.WriteLine("1 tura licytacji");
+            Console.ReadKey();
+            List<BasicPlayer> aktualniPlayers = graczeList;
+            List<BasicPlayer> kolejkaPlayers = kolejnosPlayers(aktualniPlayers, dealerButton);
+            foreach (var players in kolejkaPlayers)
+            {
+                Console.WriteLine(players.Name);
+            }
+            
             Console.WriteLine("Koniec");
             Console.ReadKey();
         }
