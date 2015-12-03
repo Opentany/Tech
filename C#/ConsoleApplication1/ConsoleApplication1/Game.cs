@@ -43,6 +43,7 @@ namespace ConsoleApplication1
         }
         static void Main()
         {
+            var graczerundy = 0;
             var random = new Random();
             var tableCards=new List<Card>();
             Console.WriteLine("Podaj ilość graczy :");
@@ -136,6 +137,7 @@ namespace ConsoleApplication1
                     {
                         Console.WriteLine("Tura " + tura + " Pierwsza licytacja");
                         aktualniPlayers = KolejnosPlayers(aktualniPlayers, dealerButton);
+                        graczerundy = aktualniPlayers.Count;
                         foreach (var gracz in aktualniPlayers)
                         {
                             if (gracz.Name == aktualniPlayers[0].Name)
@@ -185,7 +187,7 @@ namespace ConsoleApplication1
                                 Console.WriteLine("zakłady poprzednich graczy");
                                 foreach (var zak in zaklady)
                                 {
-                                    Console.WriteLine(graczeList[i].Name);
+                                    Console.WriteLine(aktualniPlayers[i].Name);
                                     Console.WriteLine(zak);
                                     i++;
                                 }
@@ -227,6 +229,7 @@ namespace ConsoleApplication1
                                                 Console.WriteLine("wstrzymuje sie");
                                                 cioty.Add(gracz);
                                                 wybor = true;
+                                                graczerundy -= 1;
                                                 break;
                                             }
                                         default:
@@ -237,7 +240,10 @@ namespace ConsoleApplication1
                                             }
                                     }
                                 } while (wybor!=true);
-                                
+                                if (graczerundy < 2)
+                                {
+                                    break;
+                                }
                                 zaklad = zaklady.Max();
                                 Console.ReadKey();
                                 Console.Clear();
@@ -257,6 +263,7 @@ namespace ConsoleApplication1
                     }
                     case 2:
                     {
+                        graczerundy = aktualniPlayers.Count;
                         Console.WriteLine("Tura "+tura+" Flop");
                         for (var i = 0; i < 3; i++)
                         {
@@ -282,7 +289,7 @@ namespace ConsoleApplication1
                             Console.WriteLine("zakłady poprzednich graczy");
                             foreach (var zak in zaklady)
                             {
-                                Console.WriteLine(graczeList[i].Name);
+                                Console.WriteLine(aktualniPlayers[i].Name);
                                 Console.WriteLine(zak);
                                 i++;
                             }
@@ -343,6 +350,7 @@ namespace ConsoleApplication1
                                         Console.WriteLine("wstrzymuje sie");
                                         cioty.Add(gracz);
                                         wybor = true;
+                                        graczerundy -= 1;
                                         break;
                                     }
                                     case "bet":
@@ -391,6 +399,10 @@ namespace ConsoleApplication1
                                     }
                                 }
                             } while (wybor != true);
+                            if (graczerundy < 2)
+                            {
+                                break;
+                            }
                             zaklad = zaklady.Max();
                             Console.ReadKey();
                             Console.Clear();
@@ -409,6 +421,7 @@ namespace ConsoleApplication1
                     }
                     case 3:
                     {
+                        graczerundy = aktualniPlayers.Count;
                         Console.WriteLine("Tura " + tura + " Turn");
                         tableCards.Add(talia.GetTopCard());
                         Console.WriteLine("Na stole pojawia się nowa karta");
@@ -431,7 +444,7 @@ namespace ConsoleApplication1
                             Console.WriteLine("zakłady poprzednich graczy");
                             foreach (var zak in zaklady)
                             {
-                                Console.WriteLine(graczeList[i].Name);
+                                Console.WriteLine(aktualniPlayers[i].Name);
                                 Console.WriteLine(zak);
                                 i++;
                             }
@@ -492,6 +505,7 @@ namespace ConsoleApplication1
                                             Console.WriteLine("wstrzymuje sie");
                                             cioty.Add(gracz);
                                             wybor = true;
+                                            graczerundy -= 1;
                                             break;
                                         }
                                     case "bet":
@@ -540,6 +554,10 @@ namespace ConsoleApplication1
                                         }
                                 }
                             } while (wybor != true);
+                            if (graczerundy < 2)
+                            {
+                                break;
+                            }
                             zaklad = zaklady.Max();
                             Console.ReadKey();
                             Console.Clear();
@@ -558,6 +576,7 @@ namespace ConsoleApplication1
                     }
                     case 4:
                     {
+                        graczerundy = aktualniPlayers.Count;
                         Console.WriteLine("Tura " + tura + " River");
                         tableCards.Add(talia.GetTopCard());
                         Console.WriteLine("Na stole pojawia się nowa karta");
@@ -580,7 +599,7 @@ namespace ConsoleApplication1
                             Console.WriteLine("zakłady poprzednich graczy");
                             foreach (var zak in zaklady)
                             {
-                                Console.WriteLine(graczeList[i].Name);
+                                Console.WriteLine(aktualniPlayers[i].Name);
                                 Console.WriteLine(zak);
                                 i++;
                             }
@@ -641,6 +660,7 @@ namespace ConsoleApplication1
                                             Console.WriteLine("wstrzymuje sie");
                                             cioty.Add(gracz);
                                             wybor = true;
+                                            graczerundy -= 1;
                                             break;
                                         }
                                     case "bet":
@@ -689,6 +709,10 @@ namespace ConsoleApplication1
                                         }
                                 }
                             } while (wybor != true);
+                            if (graczerundy<2)
+                            {
+                                break;
+                            }
                             zaklad = zaklady.Max();
                             Console.ReadKey();
                             Console.Clear();
@@ -708,7 +732,66 @@ namespace ConsoleApplication1
                 }
 
             } while (aktualniPlayers.Count>1 && tura<4);
+            if (aktualniPlayers.Count>1)
+            {
+                string[] ustawienie=new string[aktualniPlayers.Count];
+                string zwyciezca;
+                int indekszwyciezcy = 0;
+                foreach (var gracze in aktualniPlayers)
+                {
+                    Console.Clear();
+                    Console.WriteLine(gracze.Name);
+                    Console.ReadKey();
+                    Console.WriteLine("Wpisz swoje ustawienie");
+                    ustawienie[aktualniPlayers.IndexOf(gracze)] = Console.ReadLine();
+                }
+                Console.Clear();
+                Console.WriteLine("Showdown");
+                Console.WriteLine("Stol:");
+                foreach (var karta in tableCards)
+                {
+                    Console.WriteLine(karta.ToString());
+                }
+                foreach (var gracz in aktualniPlayers)
+                {
+                    Console.WriteLine(gracz.Name+ " Ustawienie i Karty:");
+                    Console.WriteLine(ustawienie[aktualniPlayers.IndexOf(gracz)]);
+                    foreach (var karta in gracz.Hand)
+                    {
+                        Console.WriteLine(karta.ToString());
+                    }
+                }
+                foreach (var VARIABLE in aktualniPlayers)
+                {
+                    Console.WriteLine(VARIABLE.Name);
+                }
+                Console.WriteLine("Wpisz zwyciezce");
+                do
+                {
+                    zwyciezca = Console.ReadLine();
+                    foreach (var gracz in aktualniPlayers)
+                    {
+                        if (gracz.Name == zwyciezca)
+                        {
+                            indekszwyciezcy = aktualniPlayers.IndexOf(gracz)+1;
+                        }
+                    }
+                } while (indekszwyciezcy ==0);
+                indekszwyciezcy -= 1;
+                Console.WriteLine("Wygrywa " + aktualniPlayers[indekszwyciezcy].Name);
+                Console.WriteLine("Pula wyniosla "+pula);
+                aktualniPlayers[indekszwyciezcy].Tokens += pula;
+                Console.ReadKey();
 
+
+            }
+            else
+            {
+                Console.WriteLine("Wygrywa "+ aktualniPlayers[0].Name);
+                Console.WriteLine("Pula wyniosla " + pula);
+                aktualniPlayers[0].Tokens += pula;
+                Console.ReadKey();
+            }
             Console.WriteLine("Koniec");
             Console.ReadKey();
         }
