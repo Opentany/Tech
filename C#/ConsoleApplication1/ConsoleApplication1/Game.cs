@@ -43,7 +43,7 @@ namespace ConsoleApplication1
         }
         static void Main()
         {
-            var graczerundy = 0;
+            int graczerundy;
             var random = new Random();
             var tableCards=new List<Card>();
             Console.WriteLine("Podaj ilość graczy :");
@@ -63,6 +63,9 @@ namespace ConsoleApplication1
             Console.WriteLine("Podaj dużą ciemną");
             // ReSharper disable once AssignNullToNotNullAttribute
             var bigBlind = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ile rund chcecie grac?");
+            // ReSharper disable once AssignNullToNotNullAttribute
+            var ilerund = int.Parse(Console.ReadLine());
             var graczeList = new List<BasicPlayer>(playersCount);
             for (var i = 0; i < playersCount; i++)
 
@@ -84,101 +87,212 @@ namespace ConsoleApplication1
             Console.ReadKey();
             Console.Clear();
             Console.WriteLine("Zaczynamy Texas Hold'Em");
-            Console.WriteLine("Generowanie Tali Kart");
-            var talia = new Deck(true);
-            //foreach (var karta in talia.GetCards())
-            //{
-            //    Console.WriteLine(karta.ToString());
-            //}
-            Console.ReadKey();
-            Console.Clear();
-            var dealerButton = random.Next(graczeList.Count);
-            var mamalaciemna = MaMalaCiemna(dealerButton, playersCount);
-            var maduzaciemna = MaDuzaCiemna(dealerButton, playersCount);
-            var pula = 0;
-            var zaklad = 0;
-            Console.WriteLine(graczeList[dealerButton].Name+" Ma dealer button");
-            Console.WriteLine(graczeList[mamalaciemna].Name + " Ma mala ciemna");
-            Console.WriteLine(graczeList[maduzaciemna].Name + " Ma duza ciemna");
-            Console.WriteLine("Rozdanie wstępne");
-            foreach (var gracz in graczeList)
+            for (int runda = 0; runda < ilerund; runda++)
             {
-               // Console.WriteLine(gracz.Name);
-                gracz.Hand.Add(talia.GetTopCard());
-                gracz.Hand.Add(talia.GetTopCard());
-            }
-            //foreach (var gracz in graczeList)
-            //{
-            //    Console.WriteLine(gracz.Name);
-            //    foreach (var karty in gracz.Hand)
-            //    {
-            //        Console.WriteLine(karty.ToString());
-            //    }
-            //}
-            Console.ReadKey();
-            var aktualniPlayers = graczeList;
-            var tura=0;
-            //List<BasicPlayer> kolejkaPlayers = kolejnosPlayers(aktualniPlayers, dealerButton);
-            //foreach (var players in kolejkaPlayers)
-            //{
-            //    Console.WriteLine(players.Name);
-            //}
-            var cioty = new List<BasicPlayer>();
-            var zaklady = new int[aktualniPlayers.Count];
-            do
-            {
-                tura++;
-                // ReSharper disable once SwitchStatementMissingSomeCases
-                bool wybor;
-                int zakladgracza;
-                switch (tura)
+
+
+                Console.WriteLine("Generowanie Tali Kart");
+                var talia = new Deck(true);
+                //foreach (var karta in talia.GetCards())
+                //{
+                //    Console.WriteLine(karta.ToString());
+                //}
+                Console.ReadKey();
+                Console.Clear();
+                var dealerButton=0;
+                if (runda == 0)
                 {
-                    case 1:
+                    dealerButton = random.Next(playersCount);
+                }
+                else dealerButton = MaMalaCiemna(dealerButton, playersCount);
+                var mamalaciemna = MaMalaCiemna(dealerButton, playersCount);
+                var maduzaciemna = MaDuzaCiemna(dealerButton, playersCount);
+                var pula = 0;
+                var zaklad = 0;
+                Console.WriteLine(graczeList[dealerButton].Name + " Ma dealer button");
+                Console.WriteLine(graczeList[mamalaciemna].Name + " Ma mala ciemna");
+                Console.WriteLine(graczeList[maduzaciemna].Name + " Ma duza ciemna");
+                Console.WriteLine("Rozdanie wstępne");
+                foreach (var gracz in graczeList)
+                {
+                    // Console.WriteLine(gracz.Name);
+                    gracz.Hand.Add(talia.GetTopCard());
+                    gracz.Hand.Add(talia.GetTopCard());
+                }
+                //foreach (var gracz in graczeList)
+                //{
+                //    Console.WriteLine(gracz.Name);
+                //    foreach (var karty in gracz.Hand)
+                //    {
+                //        Console.WriteLine(karty.ToString());
+                //    }
+                //}
+                Console.ReadKey();
+                var aktualniPlayers = graczeList;
+                var tura = 0;
+                //List<BasicPlayer> kolejkaPlayers = kolejnosPlayers(aktualniPlayers, dealerButton);
+                //foreach (var players in kolejkaPlayers)
+                //{
+                //    Console.WriteLine(players.Name);
+                //}
+                var cioty = new List<BasicPlayer>();
+                var zaklady = new int[aktualniPlayers.Count];
+                do
+                {
+                    tura++;
+                    // ReSharper disable once SwitchStatementMissingSomeCases
+                    bool wybor;
+                    int zakladgracza;
+                    switch (tura)
                     {
-                        Console.WriteLine("Tura " + tura + " Pierwsza licytacja");
-                        aktualniPlayers = KolejnosPlayers(aktualniPlayers, dealerButton);
-                        graczerundy = aktualniPlayers.Count;
-                        foreach (var gracz in aktualniPlayers)
+                        case 1:
                         {
-                            if (gracz.Name == aktualniPlayers[0].Name)
+                            Console.WriteLine("Tura " + tura + " Pierwsza licytacja");
+                            aktualniPlayers = KolejnosPlayers(aktualniPlayers, dealerButton);
+                            graczerundy = aktualniPlayers.Count;
+                            foreach (var gracz in aktualniPlayers)
                             {
-                                Console.Clear();
-                                Console.WriteLine("Tura " + gracz.Name);
-                                Console.ReadKey();
-                                Console.WriteLine("Twoje tokeny: " + gracz.Tokens);
-                                Console.WriteLine(gracz.Name + " wplaca mala ciemna");
-                                gracz.Tokens -= smallBlind;
-                                pula += smallBlind;
-                                zaklady[aktualniPlayers.IndexOf(gracz)]=smallBlind;
-                                zaklad = zaklady.Max();
-                                Console.WriteLine("Twoja ręka");
-                                foreach (var karty in gracz.Hand)
+                                if (gracz.Name == aktualniPlayers[0].Name)
                                 {
-                                    Console.WriteLine(karty.ToString());
+                                    Console.Clear();
+                                    Console.WriteLine("Tura " + gracz.Name);
+                                    Console.ReadKey();
+                                    Console.WriteLine("Twoje tokeny: " + gracz.Tokens);
+                                    Console.WriteLine(gracz.Name + " wplaca mala ciemna");
+                                    gracz.Tokens -= smallBlind;
+                                    pula += smallBlind;
+                                    zaklady[aktualniPlayers.IndexOf(gracz)] = smallBlind;
+                                    zaklad = zaklady.Max();
+                                    Console.WriteLine("Twoja ręka");
+                                    foreach (var karty in gracz.Hand)
+                                    {
+                                        Console.WriteLine(karty.ToString());
+                                    }
+                                    Console.ReadKey();
+                                    Console.Clear();
                                 }
-                                Console.ReadKey();
-                                Console.Clear();
+                                else if (gracz.Name == aktualniPlayers[1].Name)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("Tura " + gracz.Name);
+                                    Console.ReadKey();
+                                    Console.WriteLine("Twoje tokeny: " + gracz.Tokens);
+                                    Console.WriteLine(gracz.Name + " wplaca duza ciemna");
+                                    gracz.Tokens -= bigBlind;
+                                    pula += bigBlind;
+                                    zaklady[aktualniPlayers.IndexOf(gracz)] = bigBlind;
+                                    zaklad = zaklady.Max();
+                                    Console.WriteLine("Twoja ręka");
+                                    foreach (var karty in gracz.Hand)
+                                    {
+                                        Console.WriteLine(karty.ToString());
+                                    }
+                                    Console.ReadKey();
+                                    Console.Clear();
+                                }
+                                else
+                                {
+                                    var i = 0;
+                                    Console.Clear();
+                                    Console.WriteLine("Tura " + gracz.Name);
+                                    Console.ReadKey();
+                                    Console.WriteLine("zakłady poprzednich graczy");
+                                    foreach (var zak in zaklady)
+                                    {
+                                        Console.WriteLine(aktualniPlayers[i].Name);
+                                        Console.WriteLine(zak);
+                                        i++;
+                                    }
+                                    Console.WriteLine("najwyzszy zaklad to " + zaklad);
+                                    Console.WriteLine("Twoja ręka");
+                                    foreach (var karty in gracz.Hand)
+                                    {
+                                        Console.WriteLine(karty.ToString());
+                                    }
+                                    Console.WriteLine("Twoje tokeny: " + gracz.Tokens);
+                                    Console.WriteLine("Co robisz? wpisz jedno z trzech (call/rise/fold)");
+                                    do
+                                    {
+                                        switch (Console.ReadLine())
+                                        {
+                                            case "call":
+                                            {
+                                                zakladgracza = gracz.Call(zaklad);
+                                                pula += zakladgracza;
+                                                zaklady[aktualniPlayers.IndexOf(gracz)] = zakladgracza;
+                                                Console.WriteLine("wpłacasz " + zakladgracza + " do puli");
+                                                wybor = true;
+                                                break;
+                                            }
+                                            case "rise":
+                                            {
+                                                Console.WriteLine("Ile wpłacasz ? ");
+                                                // ReSharper disable once AssignNullToNotNullAttribute
+                                                zakladgracza = int.Parse(Console.ReadLine());
+                                                zakladgracza = gracz.Raise(zakladgracza);
+                                                pula += zakladgracza;
+                                                zaklady[aktualniPlayers.IndexOf(gracz)] = zakladgracza;
+                                                Console.WriteLine("wpłacasz " + zakladgracza + " do puli");
+                                                wybor = true;
+                                                break;
+                                            }
+                                            case "fold":
+                                            {
+                                                Console.WriteLine("wstrzymuje sie");
+                                                cioty.Add(gracz);
+                                                wybor = true;
+                                                graczerundy -= 1;
+                                                break;
+                                            }
+                                            default:
+                                            {
+                                                Console.WriteLine("Nie umiesz pisać frajerze !!");
+                                                wybor = false;
+                                                break;
+                                            }
+                                        }
+                                    } while (wybor != true);
+                                    if (graczerundy < 2)
+                                    {
+                                        break;
+                                    }
+                                    zaklad = zaklady.Max();
+                                    Console.ReadKey();
+                                    Console.Clear();
+                                }
                             }
-                            else if (gracz.Name == aktualniPlayers[1].Name)
+                            foreach (var gracz in cioty)
                             {
-                                Console.Clear();
-                                Console.WriteLine("Tura " + gracz.Name);
-                                Console.ReadKey();
-                                Console.WriteLine("Twoje tokeny: " + gracz.Tokens);
-                                Console.WriteLine(gracz.Name + " wplaca duza ciemna");
-                                gracz.Tokens -= bigBlind;
-                                pula += bigBlind;
-                                zaklady[aktualniPlayers.IndexOf(gracz)] = bigBlind;
-                                zaklad = zaklady.Max();
-                                Console.WriteLine("Twoja ręka");
-                                foreach (var karty in gracz.Hand)
-                                {
-                                    Console.WriteLine(karty.ToString());
-                                }
-                                Console.ReadKey();
-                                Console.Clear();
+                                gracz.Fold(aktualniPlayers);
                             }
-                            else
+                            Console.WriteLine("Gracze którzy pozostali w grze");
+                            foreach (var gracz in aktualniPlayers)
+                            {
+                                Console.WriteLine(gracz.Name);
+                            }
+                            Console.ReadKey();
+                            break;
+                        }
+                        case 2:
+                        {
+                            graczerundy = aktualniPlayers.Count;
+                            Console.WriteLine("Tura " + tura + " Flop");
+                            for (var i = 0; i < 3; i++)
+                            {
+                                tableCards.Add(talia.GetTopCard());
+                            }
+                            Console.WriteLine("Na stole pojawiają się karty");
+                            Console.ReadKey();
+                            foreach (var karta in tableCards)
+                            {
+                                Console.WriteLine(karta.ToString());
+                            }
+                            Console.ReadKey();
+                            Console.WriteLine("Czas rozpocząć licytację");
+                            Console.Clear();
+                            zaklady = new int[aktualniPlayers.Count];
+                            zaklad = zaklady.Max();
+                            foreach (var gracz in aktualniPlayers)
                             {
                                 var i = 0;
                                 Console.Clear();
@@ -191,55 +305,112 @@ namespace ConsoleApplication1
                                     Console.WriteLine(zak);
                                     i++;
                                 }
-                                Console.WriteLine("najwyzszy zaklad to "+zaklad);
+                                Console.WriteLine("najwyzszy zaklad to " + zaklad);
                                 Console.WriteLine("Twoja ręka");
                                 foreach (var karty in gracz.Hand)
                                 {
                                     Console.WriteLine(karty.ToString());
                                 }
-                                Console.WriteLine("Twoje tokeny: "+gracz.Tokens);
-                                Console.WriteLine("Co robisz? wpisz jedno z trzech (call/rise/fold)");
+                                Console.WriteLine("Stol:");
+                                foreach (var karta in tableCards)
+                                {
+                                    Console.WriteLine(karta.ToString());
+                                }
+                                Console.WriteLine("Twoje tokeny: " + gracz.Tokens);
+                                Console.WriteLine("Co robisz? wpisz jedno z pięciu (bet/check/call/rise/fold)");
                                 do
                                 {
                                     switch (Console.ReadLine())
                                     {
                                         case "call":
+                                        {
+                                            if (zaklad == 0)
                                             {
-                                                zakladgracza = gracz.Call(zaklad);
-                                                pula += zakladgracza;
-                                                zaklady[aktualniPlayers.IndexOf(gracz)] = zakladgracza;
-                                                Console.WriteLine("wpłacasz " + zakladgracza + " do puli");
-                                                wybor = true;
+                                                Console.WriteLine("nie masz do kogo wyrownac");
+                                                wybor = false;
+                                                Console.WriteLine("Wybierz inna opcje");
                                                 break;
                                             }
+                                            zakladgracza = gracz.Call(zaklad);
+                                            pula += zakladgracza;
+                                            zaklady[aktualniPlayers.IndexOf(gracz)] = zakladgracza;
+                                            Console.WriteLine("wpłacasz " + zakladgracza + " do puli");
+                                            wybor = true;
+                                            break;
+                                        }
                                         case "rise":
+                                        {
+                                            Console.WriteLine("Ile wpłacasz ? ");
+                                            // ReSharper disable once AssignNullToNotNullAttribute
+                                            zakladgracza = int.Parse(Console.ReadLine());
+                                            if (zakladgracza <= zaklad)
+                                            {
+                                                Console.WriteLine("Daj wiecej hajsu");
+                                                wybor = false;
+                                                Console.WriteLine("Wybierz opcje na nowo");
+                                                break;
+                                            }
+                                            zakladgracza = gracz.Raise(zakladgracza);
+                                            pula += zakladgracza;
+                                            zaklady[aktualniPlayers.IndexOf(gracz)] = zakladgracza;
+                                            Console.WriteLine("wpłacasz " + zakladgracza + " do puli");
+                                            wybor = true;
+                                            break;
+                                        }
+                                        case "fold":
+                                        {
+                                            Console.WriteLine("wstrzymuje sie");
+                                            cioty.Add(gracz);
+                                            wybor = true;
+                                            graczerundy -= 1;
+                                            break;
+                                        }
+                                        case "bet":
+                                        {
+                                            if (zaklad == 0)
                                             {
                                                 Console.WriteLine("Ile wpłacasz ? ");
                                                 // ReSharper disable once AssignNullToNotNullAttribute
                                                 zakladgracza = int.Parse(Console.ReadLine());
-                                                zakladgracza = gracz.Raise(zakladgracza);
+                                                if (zakladgracza < 1)
+                                                {
+                                                    Console.WriteLine("Daj wiecej hajsu");
+                                                    wybor = false;
+                                                    Console.WriteLine("Wybierz opcje na nowo");
+                                                    break;
+                                                }
+                                                zakladgracza = gracz.Bet(zakladgracza);
                                                 pula += zakladgracza;
                                                 zaklady[aktualniPlayers.IndexOf(gracz)] = zakladgracza;
                                                 Console.WriteLine("wpłacasz " + zakladgracza + " do puli");
                                                 wybor = true;
                                                 break;
                                             }
-                                        case "fold":
+                                            Console.WriteLine("Jest juz jakis zaklad wybierz inna opcje");
+                                            wybor = false;
+                                            break;
+                                        }
+                                        case "check":
+                                        {
+                                            if (zaklad == 0)
                                             {
-                                                Console.WriteLine("wstrzymuje sie");
-                                                cioty.Add(gracz);
+                                                Console.WriteLine("czekam");
                                                 wybor = true;
-                                                graczerundy -= 1;
                                                 break;
                                             }
+                                            Console.WriteLine("Nie mozesz czekac, wybierz inna opcje");
+                                            wybor = false;
+                                            break;
+                                        }
+
                                         default:
-                                            {
-                                                Console.WriteLine("Nie umiesz pisać frajerze !!");
-                                                wybor = false;
-                                                break;
-                                            }
+                                        {
+                                            Console.WriteLine("Nie umiesz pisać frajerze !!");
+                                            wybor = false;
+                                            break;
+                                        }
                                     }
-                                } while (wybor!=true);
+                                } while (wybor != true);
                                 if (graczerundy < 2)
                                 {
                                     break;
@@ -248,224 +419,65 @@ namespace ConsoleApplication1
                                 Console.ReadKey();
                                 Console.Clear();
                             }
+                            foreach (var gracz in cioty)
+                            {
+                                gracz.Fold(aktualniPlayers);
+                            }
+                            Console.WriteLine("Gracze którzy pozostali w grze");
+                            foreach (var gracz in aktualniPlayers)
+                            {
+                                Console.WriteLine(gracz.Name);
+                            }
+                            Console.ReadKey();
+                            break;
                         }
-                        foreach (var gracz in cioty)
+                        case 3:
                         {
-                            gracz.Fold(aktualniPlayers);
-                        }
-                        Console.WriteLine("Gracze którzy pozostali w grze");
-                        foreach (var gracz in aktualniPlayers)
-                        {
-                            Console.WriteLine(gracz.Name);
-                        }
-                        Console.ReadKey();
-                        break;
-                    }
-                    case 2:
-                    {
-                        graczerundy = aktualniPlayers.Count;
-                        Console.WriteLine("Tura "+tura+" Flop");
-                        for (var i = 0; i < 3; i++)
-                        {
+                            graczerundy = aktualniPlayers.Count;
+                            Console.WriteLine("Tura " + tura + " Turn");
                             tableCards.Add(talia.GetTopCard());
-                        }
-                        Console.WriteLine("Na stole pojawiają się karty");
-                        Console.ReadKey();
-                        foreach (var karta in tableCards)
-                        {
-                            Console.WriteLine(karta.ToString());
-                        }
-                        Console.ReadKey();
-                        Console.WriteLine("Czas rozpocząć licytację");
-                        Console.Clear();
-                        zaklady=new int[aktualniPlayers.Count];
-                        zaklad = zaklady.Max();
-                        foreach (var gracz in aktualniPlayers)
-                        {
-                            var i = 0;
-                            Console.Clear();
-                            Console.WriteLine("Tura " + gracz.Name);
+                            Console.WriteLine("Na stole pojawia się nowa karta");
                             Console.ReadKey();
-                            Console.WriteLine("zakłady poprzednich graczy");
-                            foreach (var zak in zaklady)
-                            {
-                                Console.WriteLine(aktualniPlayers[i].Name);
-                                Console.WriteLine(zak);
-                                i++;
-                            }
-                            Console.WriteLine("najwyzszy zaklad to " + zaklad);
-                            Console.WriteLine("Twoja ręka");
-                            foreach (var karty in gracz.Hand)
-                            {
-                                Console.WriteLine(karty.ToString());
-                            }
-                            Console.WriteLine("Stol:");
                             foreach (var karta in tableCards)
                             {
                                 Console.WriteLine(karta.ToString());
                             }
-                            Console.WriteLine("Twoje tokeny: " + gracz.Tokens);
-                            Console.WriteLine("Co robisz? wpisz jedno z pięciu (bet/check/call/rise/fold)");
-                            do
-                            {
-                                switch (Console.ReadLine())
-                                {
-                                    case "call":
-                                    {
-                                        if (zaklad==0)
-                                        {
-                                            Console.WriteLine("nie masz do kogo wyrownac");
-                                            wybor = false;
-                                            Console.WriteLine("Wybierz inna opcje");
-                                            break;
-                                        }
-                                        zakladgracza = gracz.Call(zaklad);
-                                        pula += zakladgracza;
-                                        zaklady[aktualniPlayers.IndexOf(gracz)] = zakladgracza;
-                                        Console.WriteLine("wpłacasz " + zakladgracza + " do puli");
-                                        wybor = true;
-                                        break;
-                                    }
-                                    case "rise":
-                                    {
-                                        Console.WriteLine("Ile wpłacasz ? ");
-                                        // ReSharper disable once AssignNullToNotNullAttribute
-                                        zakladgracza = int.Parse(Console.ReadLine());
-                                        if (zakladgracza<=zaklad)
-                                        {
-                                            Console.WriteLine("Daj wiecej hajsu");
-                                            wybor = false;
-                                            Console.WriteLine("Wybierz opcje na nowo");
-                                            break;
-                                        }
-                                        zakladgracza = gracz.Raise(zakladgracza);
-                                        pula += zakladgracza;
-                                        zaklady[aktualniPlayers.IndexOf(gracz)] = zakladgracza;
-                                        Console.WriteLine("wpłacasz " + zakladgracza + " do puli");
-                                        wybor = true;
-                                        break;
-                                    }
-                                    case "fold":
-                                    {
-                                        Console.WriteLine("wstrzymuje sie");
-                                        cioty.Add(gracz);
-                                        wybor = true;
-                                        graczerundy -= 1;
-                                        break;
-                                    }
-                                    case "bet":
-                                    {
-                                        if (zaklad == 0)
-                                        {
-                                            Console.WriteLine("Ile wpłacasz ? ");
-                                            // ReSharper disable once AssignNullToNotNullAttribute
-                                            zakladgracza = int.Parse(Console.ReadLine());
-                                            if (zakladgracza < 1)
-                                            {
-                                                Console.WriteLine("Daj wiecej hajsu");
-                                                wybor = false;
-                                                Console.WriteLine("Wybierz opcje na nowo");
-                                                break;
-                                            }
-                                            zakladgracza = gracz.Bet(zakladgracza);
-                                            pula += zakladgracza;
-                                            zaklady[aktualniPlayers.IndexOf(gracz)] = zakladgracza;
-                                            Console.WriteLine("wpłacasz " + zakladgracza + " do puli");
-                                            wybor = true;
-                                            break;
-                                        }
-                                        Console.WriteLine("Jest juz jakis zaklad wybierz inna opcje");
-                                        wybor = false;
-                                        break;
-                                    }
-                                    case "check":
-                                    {
-                                        if (zaklad == 0)
-                                        {
-                                            Console.WriteLine("czekam");
-                                            wybor = true;
-                                            break;
-                                        }
-                                        Console.WriteLine("Nie mozesz czekac, wybierz inna opcje");
-                                        wybor = false;
-                                        break;
-                                    }
-
-                                    default:
-                                    {
-                                        Console.WriteLine("Nie umiesz pisać frajerze !!");
-                                        wybor = false;
-                                        break;
-                                    }
-                                }
-                            } while (wybor != true);
-                            if (graczerundy < 2)
-                            {
-                                break;
-                            }
+                            Console.ReadKey();
+                            Console.WriteLine("Czas rozpocząć licytację");
+                            Console.Clear();
+                            zaklady = new int[aktualniPlayers.Count];
                             zaklad = zaklady.Max();
-                            Console.ReadKey();
-                            Console.Clear();
-                        }
-                        foreach (var gracz in cioty)
-                        {
-                            gracz.Fold(aktualniPlayers);
-                        }
-                        Console.WriteLine("Gracze którzy pozostali w grze");
-                        foreach (var gracz in aktualniPlayers)
-                        {
-                            Console.WriteLine(gracz.Name);
-                        }
-                        Console.ReadKey();
-                        break;
-                    }
-                    case 3:
-                    {
-                        graczerundy = aktualniPlayers.Count;
-                        Console.WriteLine("Tura " + tura + " Turn");
-                        tableCards.Add(talia.GetTopCard());
-                        Console.WriteLine("Na stole pojawia się nowa karta");
-                        Console.ReadKey();
-                        foreach (var karta in tableCards)
-                        {
-                            Console.WriteLine(karta.ToString());
-                        }
-                        Console.ReadKey();
-                        Console.WriteLine("Czas rozpocząć licytację");
-                        Console.Clear();
-                        zaklady = new int[aktualniPlayers.Count];
-                        zaklad = zaklady.Max();
-                        foreach (var gracz in aktualniPlayers)
-                        {
-                            var i = 0;
-                            Console.Clear();
-                            Console.WriteLine("Tura " + gracz.Name);
-                            Console.ReadKey();
-                            Console.WriteLine("zakłady poprzednich graczy");
-                            foreach (var zak in zaklady)
+                            foreach (var gracz in aktualniPlayers)
                             {
-                                Console.WriteLine(aktualniPlayers[i].Name);
-                                Console.WriteLine(zak);
-                                i++;
-                            }
-                            Console.WriteLine("najwyzszy zaklad to " + zaklad);
-                            Console.WriteLine("Twoja ręka");
-                            foreach (var karty in gracz.Hand)
-                            {
-                                Console.WriteLine(karty.ToString());
-                            }
-                            Console.WriteLine("Stol:");
-                            foreach (var karta in tableCards)
-                            {
-                                Console.WriteLine(karta.ToString());
-                            }
-                            Console.WriteLine("Twoje tokeny: " + gracz.Tokens);
-                            Console.WriteLine("Co robisz? wpisz jedno z pięciu (bet/check/call/rise/fold)");
-                            do
-                            {
-                                switch (Console.ReadLine())
+                                var i = 0;
+                                Console.Clear();
+                                Console.WriteLine("Tura " + gracz.Name);
+                                Console.ReadKey();
+                                Console.WriteLine("zakłady poprzednich graczy");
+                                foreach (var zak in zaklady)
                                 {
-                                    case "call":
+                                    Console.WriteLine(aktualniPlayers[i].Name);
+                                    Console.WriteLine(zak);
+                                    i++;
+                                }
+                                Console.WriteLine("najwyzszy zaklad to " + zaklad);
+                                Console.WriteLine("Twoja ręka");
+                                foreach (var karty in gracz.Hand)
+                                {
+                                    Console.WriteLine(karty.ToString());
+                                }
+                                Console.WriteLine("Stol:");
+                                foreach (var karta in tableCards)
+                                {
+                                    Console.WriteLine(karta.ToString());
+                                }
+                                Console.WriteLine("Twoje tokeny: " + gracz.Tokens);
+                                Console.WriteLine("Co robisz? wpisz jedno z pięciu (bet/check/call/rise/fold)");
+                                do
+                                {
+                                    switch (Console.ReadLine())
+                                    {
+                                        case "call":
                                         {
                                             if (zaklad == 0)
                                             {
@@ -481,7 +493,7 @@ namespace ConsoleApplication1
                                             wybor = true;
                                             break;
                                         }
-                                    case "rise":
+                                        case "rise":
                                         {
                                             Console.WriteLine("Ile wpłacasz ? ");
                                             // ReSharper disable once AssignNullToNotNullAttribute
@@ -500,7 +512,7 @@ namespace ConsoleApplication1
                                             wybor = true;
                                             break;
                                         }
-                                    case "fold":
+                                        case "fold":
                                         {
                                             Console.WriteLine("wstrzymuje sie");
                                             cioty.Add(gracz);
@@ -508,7 +520,7 @@ namespace ConsoleApplication1
                                             graczerundy -= 1;
                                             break;
                                         }
-                                    case "bet":
+                                        case "bet":
                                         {
                                             if (zaklad == 0)
                                             {
@@ -533,7 +545,7 @@ namespace ConsoleApplication1
                                             wybor = false;
                                             break;
                                         }
-                                    case "check":
+                                        case "check":
                                         {
                                             if (zaklad == 0)
                                             {
@@ -546,81 +558,81 @@ namespace ConsoleApplication1
                                             break;
                                         }
 
-                                    default:
+                                        default:
                                         {
                                             Console.WriteLine("Nie umiesz pisać frajerze !!");
                                             wybor = false;
                                             break;
                                         }
+                                    }
+                                } while (wybor != true);
+                                if (graczerundy < 2)
+                                {
+                                    break;
                                 }
-                            } while (wybor != true);
-                            if (graczerundy < 2)
-                            {
-                                break;
+                                zaklad = zaklady.Max();
+                                Console.ReadKey();
+                                Console.Clear();
                             }
-                            zaklad = zaklady.Max();
+                            foreach (var gracz in cioty)
+                            {
+                                gracz.Fold(aktualniPlayers);
+                            }
+                            Console.WriteLine("Gracze którzy pozostali w grze");
+                            foreach (var gracz in aktualniPlayers)
+                            {
+                                Console.WriteLine(gracz.Name);
+                            }
                             Console.ReadKey();
-                            Console.Clear();
+                            break;
                         }
-                        foreach (var gracz in cioty)
+                        case 4:
                         {
-                            gracz.Fold(aktualniPlayers);
-                        }
-                        Console.WriteLine("Gracze którzy pozostali w grze");
-                        foreach (var gracz in aktualniPlayers)
-                        {
-                            Console.WriteLine(gracz.Name);
-                        }
-                        Console.ReadKey();
-                        break;
-                    }
-                    case 4:
-                    {
-                        graczerundy = aktualniPlayers.Count;
-                        Console.WriteLine("Tura " + tura + " River");
-                        tableCards.Add(talia.GetTopCard());
-                        Console.WriteLine("Na stole pojawia się nowa karta");
-                        Console.ReadKey();
-                        foreach (var karta in tableCards)
-                        {
-                            Console.WriteLine(karta.ToString());
-                        }
-                        Console.ReadKey();
-                        Console.WriteLine("Czas rozpocząć licytację");
-                        Console.Clear();
-                        zaklady = new int[aktualniPlayers.Count];
-                        zaklad = zaklady.Max();
-                        foreach (var gracz in aktualniPlayers)
-                        {
-                            var i = 0;
-                            Console.Clear();
-                            Console.WriteLine("Tura " + gracz.Name);
+                            graczerundy = aktualniPlayers.Count;
+                            Console.WriteLine("Tura " + tura + " River");
+                            tableCards.Add(talia.GetTopCard());
+                            Console.WriteLine("Na stole pojawia się nowa karta");
                             Console.ReadKey();
-                            Console.WriteLine("zakłady poprzednich graczy");
-                            foreach (var zak in zaklady)
-                            {
-                                Console.WriteLine(aktualniPlayers[i].Name);
-                                Console.WriteLine(zak);
-                                i++;
-                            }
-                            Console.WriteLine("najwyzszy zaklad to " + zaklad);
-                            Console.WriteLine("Twoja ręka");
-                            foreach (var karty in gracz.Hand)
-                            {
-                                Console.WriteLine(karty.ToString());
-                            }
-                            Console.WriteLine("Stol:");
                             foreach (var karta in tableCards)
                             {
                                 Console.WriteLine(karta.ToString());
                             }
-                            Console.WriteLine("Twoje tokeny: " + gracz.Tokens);
-                            Console.WriteLine("Co robisz? wpisz jedno z pięciu (bet/check/call/rise/fold)");
-                            do
+                            Console.ReadKey();
+                            Console.WriteLine("Czas rozpocząć licytację");
+                            Console.Clear();
+                            zaklady = new int[aktualniPlayers.Count];
+                            zaklad = zaklady.Max();
+                            foreach (var gracz in aktualniPlayers)
                             {
-                                switch (Console.ReadLine())
+                                var i = 0;
+                                Console.Clear();
+                                Console.WriteLine("Tura " + gracz.Name);
+                                Console.ReadKey();
+                                Console.WriteLine("zakłady poprzednich graczy");
+                                foreach (var zak in zaklady)
                                 {
-                                    case "call":
+                                    Console.WriteLine(aktualniPlayers[i].Name);
+                                    Console.WriteLine(zak);
+                                    i++;
+                                }
+                                Console.WriteLine("najwyzszy zaklad to " + zaklad);
+                                Console.WriteLine("Twoja ręka");
+                                foreach (var karty in gracz.Hand)
+                                {
+                                    Console.WriteLine(karty.ToString());
+                                }
+                                Console.WriteLine("Stol:");
+                                foreach (var karta in tableCards)
+                                {
+                                    Console.WriteLine(karta.ToString());
+                                }
+                                Console.WriteLine("Twoje tokeny: " + gracz.Tokens);
+                                Console.WriteLine("Co robisz? wpisz jedno z pięciu (bet/check/call/rise/fold)");
+                                do
+                                {
+                                    switch (Console.ReadLine())
+                                    {
+                                        case "call":
                                         {
                                             if (zaklad == 0)
                                             {
@@ -636,7 +648,7 @@ namespace ConsoleApplication1
                                             wybor = true;
                                             break;
                                         }
-                                    case "rise":
+                                        case "rise":
                                         {
                                             Console.WriteLine("Ile wpłacasz ? ");
                                             // ReSharper disable once AssignNullToNotNullAttribute
@@ -655,7 +667,7 @@ namespace ConsoleApplication1
                                             wybor = true;
                                             break;
                                         }
-                                    case "fold":
+                                        case "fold":
                                         {
                                             Console.WriteLine("wstrzymuje sie");
                                             cioty.Add(gracz);
@@ -663,7 +675,7 @@ namespace ConsoleApplication1
                                             graczerundy -= 1;
                                             break;
                                         }
-                                    case "bet":
+                                        case "bet":
                                         {
                                             if (zaklad == 0)
                                             {
@@ -688,7 +700,7 @@ namespace ConsoleApplication1
                                             wybor = false;
                                             break;
                                         }
-                                    case "check":
+                                        case "check":
                                         {
                                             if (zaklad == 0)
                                             {
@@ -701,98 +713,118 @@ namespace ConsoleApplication1
                                             break;
                                         }
 
-                                    default:
+                                        default:
                                         {
                                             Console.WriteLine("Nie umiesz pisać frajerze !!");
                                             wybor = false;
                                             break;
                                         }
+                                    }
+                                } while (wybor != true);
+                                if (graczerundy < 2)
+                                {
+                                    break;
                                 }
-                            } while (wybor != true);
-                            if (graczerundy<2)
-                            {
-                                break;
+                                zaklad = zaklady.Max();
+                                Console.ReadKey();
+                                Console.Clear();
                             }
-                            zaklad = zaklady.Max();
+                            foreach (var gracz in cioty)
+                            {
+                                gracz.Fold(aktualniPlayers);
+                            }
+                            Console.WriteLine("Gracze którzy pozostali w grze");
+                            foreach (var gracz in aktualniPlayers)
+                            {
+                                Console.WriteLine(gracz.Name);
+                            }
                             Console.ReadKey();
-                            Console.Clear();
+                            break;
                         }
-                        foreach (var gracz in cioty)
-                        {
-                            gracz.Fold(aktualniPlayers);
-                        }
-                        Console.WriteLine("Gracze którzy pozostali w grze");
-                        foreach (var gracz in aktualniPlayers)
-                        {
-                            Console.WriteLine(gracz.Name);
-                        }
-                        Console.ReadKey();
-                        break;
                     }
-                }
 
-            } while (aktualniPlayers.Count>1 && tura<4);
-            if (aktualniPlayers.Count>1)
-            {
-                string[] ustawienie=new string[aktualniPlayers.Count];
-                string zwyciezca;
-                int indekszwyciezcy = 0;
-                foreach (var gracze in aktualniPlayers)
+                } while (aktualniPlayers.Count > 1 && tura < 4);
+                if (aktualniPlayers.Count > 1)
                 {
+                    string[] ustawienie = new string[aktualniPlayers.Count];
+                    string zwyciezca;
+                    int indekszwyciezcy = 0;
+                    foreach (var gracze in aktualniPlayers)
+                    {
+                        Console.Clear();
+                        Console.WriteLine(gracze.Name);
+                        Console.ReadKey();
+                        Console.WriteLine("Wpisz swoje ustawienie");
+                        ustawienie[aktualniPlayers.IndexOf(gracze)] = Console.ReadLine();
+                    }
                     Console.Clear();
-                    Console.WriteLine(gracze.Name);
-                    Console.ReadKey();
-                    Console.WriteLine("Wpisz swoje ustawienie");
-                    ustawienie[aktualniPlayers.IndexOf(gracze)] = Console.ReadLine();
-                }
-                Console.Clear();
-                Console.WriteLine("Showdown");
-                Console.WriteLine("Stol:");
-                foreach (var karta in tableCards)
-                {
-                    Console.WriteLine(karta.ToString());
-                }
-                foreach (var gracz in aktualniPlayers)
-                {
-                    Console.WriteLine(gracz.Name+ " Ustawienie i Karty:");
-                    Console.WriteLine(ustawienie[aktualniPlayers.IndexOf(gracz)]);
-                    foreach (var karta in gracz.Hand)
+                    Console.WriteLine("Showdown");
+                    Console.WriteLine("Stol:");
+                    foreach (var karta in tableCards)
                     {
                         Console.WriteLine(karta.ToString());
                     }
-                }
-                foreach (var VARIABLE in aktualniPlayers)
-                {
-                    Console.WriteLine(VARIABLE.Name);
-                }
-                Console.WriteLine("Wpisz zwyciezce");
-                do
-                {
-                    zwyciezca = Console.ReadLine();
                     foreach (var gracz in aktualniPlayers)
                     {
-                        if (gracz.Name == zwyciezca)
+                        Console.WriteLine(gracz.Name + " Ustawienie i Karty:");
+                        Console.WriteLine(ustawienie[aktualniPlayers.IndexOf(gracz)]);
+                        foreach (var karta in gracz.Hand)
                         {
-                            indekszwyciezcy = aktualniPlayers.IndexOf(gracz)+1;
+                            Console.WriteLine(karta.ToString());
                         }
                     }
-                } while (indekszwyciezcy ==0);
-                indekszwyciezcy -= 1;
-                Console.WriteLine("Wygrywa " + aktualniPlayers[indekszwyciezcy].Name);
-                Console.WriteLine("Pula wyniosla "+pula);
-                aktualniPlayers[indekszwyciezcy].Tokens += pula;
+                    foreach (var gracz in aktualniPlayers)
+                    {
+                        Console.WriteLine(gracz.Name);
+                    }
+                    Console.WriteLine("Wpisz zwyciezce");
+                    do
+                    {
+                        zwyciezca = Console.ReadLine();
+                        foreach (var gracz in aktualniPlayers)
+                        {
+                            if (gracz.Name == zwyciezca)
+                            {
+                                indekszwyciezcy = aktualniPlayers.IndexOf(gracz) + 1;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Taki gracz nie mogl wygrac, wpisz ponownie");
+                            }
+                        }
+                    } while (indekszwyciezcy == 0);
+                    indekszwyciezcy -= 1;
+                    Console.WriteLine("Wygrywa " + aktualniPlayers[indekszwyciezcy].Name);
+                    Console.WriteLine("Pula wyniosla " + pula);
+                    aktualniPlayers[indekszwyciezcy].Tokens += pula;
+                    Console.ReadKey();
+
+
+                }
+                else
+                {
+                    Console.WriteLine("Wygrywa " + aktualniPlayers[0].Name);
+                    Console.WriteLine("Pula wyniosla " + pula);
+                    aktualniPlayers[0].Tokens += pula;
+                    Console.ReadKey();
+                }
+                Console.WriteLine("Koniec");
                 Console.ReadKey();
-
-
             }
-            else
+            Console.Clear();
+            Console.WriteLine("Wyniki :");
+            int[] wyniki = new int[playersCount];
+            foreach (var gracz in graczeList)
             {
-                Console.WriteLine("Wygrywa "+ aktualniPlayers[0].Name);
-                Console.WriteLine("Pula wyniosla " + pula);
-                aktualniPlayers[0].Tokens += pula;
-                Console.ReadKey();
+                wyniki[graczeList.IndexOf(gracz)] = gracz.Tokens;
             }
-            Console.WriteLine("Koniec");
+            var j=0;
+            foreach (var wynik in wyniki)
+            {
+                Console.WriteLine(graczeList[j].Name);
+                Console.WriteLine(wynik);
+                j++;
+            }
             Console.ReadKey();
         }
     }
