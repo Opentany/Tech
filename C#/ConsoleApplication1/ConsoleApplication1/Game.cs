@@ -115,15 +115,60 @@ namespace ConsoleApplication1
             //    }
             //}
             Console.ReadKey();
-            Console.WriteLine("1 tura licytacji");
-            Console.ReadKey();
             List<BasicPlayer> aktualniPlayers = graczeList;
-            List<BasicPlayer> kolejkaPlayers = kolejnosPlayers(aktualniPlayers, dealerButton);
-            foreach (var players in kolejkaPlayers)
+            var tura=0;
+            //List<BasicPlayer> kolejkaPlayers = kolejnosPlayers(aktualniPlayers, dealerButton);
+            //foreach (var players in kolejkaPlayers)
+            //{
+            //    Console.WriteLine(players.Name);
+            //}
+            do
             {
-                Console.WriteLine(players.Name);
-            }
-            
+                tura++;
+                // ReSharper disable once SwitchStatementMissingSomeCases
+                switch (tura)
+                {
+                    case 1:
+                    {
+                        aktualniPlayers = kolejnosPlayers(aktualniPlayers, dealerButton);
+                        foreach (var gracz in aktualniPlayers)
+                        {
+                            if (gracz.Name == aktualniPlayers[0].Name)
+                            {
+                                Console.WriteLine(gracz.Name + " wplaca mala ciemna");
+                                gracz.Tokens -= smallBlind;
+                            }
+                            else if (gracz.Name == aktualniPlayers[1].Name)
+                            {
+                                Console.WriteLine(gracz.Name + " wplaca duza ciemna");
+                                gracz.Tokens -= bigBlind;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tura "+gracz.Name);
+                            }
+                        }
+                        break;
+                    }
+                    case 2:
+                    {
+                        Console.WriteLine(tura);
+                        break;
+                    }
+                    case 3:
+                    {
+                        Console.WriteLine(tura);
+                        break;
+                    }
+                    case 4:
+                    {
+                        Console.WriteLine(tura);
+                        break;
+                    }
+                }
+                Console.WriteLine(tura);
+
+            } while (aktualniPlayers.Count>1 && tura<4);
             Console.WriteLine("Koniec");
             Console.ReadKey();
         }
