@@ -1,5 +1,6 @@
 #drop table produkt;
 #drop table klient;
+use sklep;
 #drop table sprzedaz;
 create table if not exists Produkt
 (
@@ -71,7 +72,7 @@ insert into klient (Nazwa, Miasto, Typ)
 values ('Pekum', 'Sopot', 'Firma');
 insert into klient (Nazwa, Miasto, Typ)
 values ('Pieńkoski', 'Ostrołęka', 'Indywidualny');
-
+drop procedure tranzakcje;
 DELIMITER $$
 create procedure tranzakcje()
 begin
@@ -86,7 +87,7 @@ begin
     while i<=1000 do
 		set ID = (select KlientId from klient order by Rand() Limit 1);
         set PRONUMER = (select ProduktNumer from produkt order by Rand() Limit 1);
-        set ILE = (0 + ceil(rand() * 100));
+        set ILE = tu trzeba randoma wpisać np od 1-100
         set PRICE = (select Cena from produkt where ProduktNumer = PRONUMER);
         set PRICEALL = ILE * PRICE;
         insert into sprzedaz(KlientId,ProduktNumer,Ilosc,Cena)
@@ -98,6 +99,6 @@ end$$
 delimiter ;
 #drop procedure tranzakcje;
 call tranzakcje();
-#select * from sprzedaz;
+select * from sprzedaz;
 #drop table sprzedaz;
 #select * from klient;

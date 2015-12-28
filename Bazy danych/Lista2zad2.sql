@@ -32,25 +32,6 @@ CREATE TABLE IF NOT EXISTS `sklep2`.`sprzedaz` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 
-DELIMITER //
-CREATE PROCEDURE insert_not_allowed()
-BEGIN
-    SELECT 'Insert not allowed';
-END//
-
-delimiter ;
-DELIMITER //
-CREATE PROCEDURE wrong_adress()
-BEGIN
-    SELECT 'wrong adress';
-END//
-
-delimiter ;
-DELIMITER //
-CREATE PROCEDURE wrong_producent()
-BEGIN
-    SELECT 'wrong producent';
-END//
 
 delimiter ;
 USE `sklep2`;
@@ -158,7 +139,7 @@ values ('qwert','qwerty');
 insert into sklep (nazwa, adres)
 values ('cvbnm','cvbnmm');
 insert into sprzedaz (sklep_nazwa,sklep_adres,towar_nazwa,towar_producent,cena,data)
-values ('cvbnnm','cvbnnmm','cvbnnm','cvbnnmm',2.5,'2012-08-08');
+values ('cvbnnmb','cvbnnmm','cvbnnmb','cvbnnmm',2.5,'2012-08-08');
 SET SQL_SAFE_UPDATES = 0;
 update sprzedaz set sklep_nazwa ='cabnnnnnm' where sklep_adres like 'cvbnnmm';
 delete from sprzedaz where sklep_nazwa ='cabnnnnnm';
