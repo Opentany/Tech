@@ -1,0 +1,44 @@
+                opt f-g-h+l+o+
+                org $1000
+
+start           equ * 
+                ldy #1 ; Przesyła pamięć do rejestru Y  (Y<-M)
+				; Liczba którą chcemy skonwertować:
+				lda #%11111010 ; % oznacza liczbę binarną 
+				;
+                jsr bintohex ; Skacze do nowej lokacji zapisując adres powrotny (skacze do bintohex) ?
+                lda <text ;Przesyła text do akumulatora ("<label" oznacza wartość bezpośrednią młodszych bitów wartości etykiety) ? 
+                ldx >text ;przesyła text do akumulatora (starsze bity) ?
+                jsr $ff80 ; skacze do $ff80 rejestr odpowiedzialny za wyświetlanie
+                brk ; force break :)
+
+bintohex		pha ; pushuje akumulator na stos ?
+				jsr pxdig ; skacze do pxdig 
+				pla ; ściąga(pulluje) akumulator ze stosu ?
+				lsr @  ; Przesunięcia bitowe w prawo ?
+				lsr @  ; @ tu stoi bo emulator tak ma XD
+				lsr @
+				lsr @
+pxdig			and #%1111  ;Wyzerowanie bitów oprócz ostatnich 4 
+				ora #'0'    ;OR z zerem  ?
+				cmp #'9'+1  ;Porównanie akumulatora z tym ('9' + 1) sprawdza czy akumulator jest mniejszy od wartości '9'+1 :)
+				bcc pr ; skok do pr gdy C = 0 (carry clear) A < M :)
+				clc
+				adc #'A'-'9'-2 ;Przesunięcie do Litery
+				
+
+pr				sta text,y ; zapisuje akumulator w pamięci (w text i y) ?
+				dey ; zmniejsza y o 1 :)
+				rts ; return (ale gdzie? Oo) ? 
+
+                org $2000 ; pod tym adresem będzie zapisany text ?
+text            equ *
+				dta b(8),b(8),b(8),b(8) 
+				dta b(8),b(8),b(8),b(8)
+                dta b(10) ; '\n'
+                dta b(0)
+
+                org $2E0
+                dta a(start)
+
+                end of file

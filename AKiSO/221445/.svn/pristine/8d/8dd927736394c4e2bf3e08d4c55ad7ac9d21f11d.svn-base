@@ -1,0 +1,96 @@
+section .data
+
+formatin: db "%lf %c %lf", 0
+outf: db "%lf ",10,0
+errormsg: db "no operand found",10,0
+
+
+section .bss
+dzialanie: resb 4
+number1: resq 1
+number2: resq 1
+wynik: resq 1
+
+
+section .text
+
+extern printf
+extern scanf
+
+global main                    
+
+
+main:
+	push EBP
+	mov EBP, ESP
+	
+	push number2
+	push dzialanie
+	push number1
+	push formatin
+	call scanf
+	add ESP, 16
+	
+
+proces:
+	cmp WORD [dzialanie], '+'
+	je dod
+	cmp WORD [dzialanie], '-'
+	je ode
+	cmp WORD [dzialanie], '*'
+	je ml
+	cmp WORD [dzialanie], '/'
+	je dv
+	
+	push errormsg
+	call printf
+	add ESP, 4
+	jmp end
+
+dod:
+	finit
+	fld QWORD [number1]
+	fld QWORD [number2]
+	faddp
+	fst QWORD [wynik]
+	jmp print
+
+ode:
+	finit
+	fld QWORD [number1]
+	fld QWORD [number2]
+	fsubp
+	fst QWORD [wynik]
+	jmp print
+
+
+ml:
+	finit
+	fld QWORD [number1]
+	fld QWORD [number2]
+	fmulp
+	fst QWORD [wynik]
+	jmp print
+
+
+dv:
+	finit
+	fld QWORD [number1]
+	fld QWORD [number2]
+	fdivp
+	fst QWORD [wynik]
+	jmp print
+
+
+print:
+	push DWORD [wynik + 4]
+	push DWORD [wynik]
+	push outf
+	call printf
+	add ESP, 8
+
+end:	
+	mov ESP, EBP
+	pop EBP
+
+	ret 
