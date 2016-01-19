@@ -207,7 +207,7 @@ until bef >= nex
 end repeat;
  
 drop table if exists temp;
-create temporary table temp
+create temporary table tempbattle_detailsbattle_detailsbattle
     select * from odległość_tr;
  
 delete from odległość_tr;
